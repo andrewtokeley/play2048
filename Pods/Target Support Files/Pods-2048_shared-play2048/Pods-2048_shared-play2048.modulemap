@@ -1,0 +1,6 @@
+framework module Pods_2048_shared_play2048 {
+  umbrella header "Pods-2048_shared-play2048-umbrella.h"
+
+  export *
+  module * { export * }
+}
