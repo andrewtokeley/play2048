@@ -66,6 +66,8 @@
 		D840754923AA262E00121170 /* HighScoreEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D85812AA23A55CEB007809C1 /* HighScoreEntryTableViewCell.xib */; };
 		D840754A23AA262E00121170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8538684239EB70600E2BB1F /* Assets.xcassets */; };
 		D8450E2923AE0BB300296676 /* GamePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8450E2623AD93B200296676 /* GamePresenterTests.swift */; };
+		D8450E2B23AEC90B00296676 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8450E2A23AEC90B00296676 /* UIViewControllerExtension.swift */; };
+		D8450E2C23AECB7500296676 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8450E2A23AEC90B00296676 /* UIViewControllerExtension.swift */; };
 		D850CFAC23A1D5B90059F9C1 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850CFAB23A1D5B90059F9C1 /* DataError.swift */; };
 		D850CFAF23A1D93B0059F9C1 /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850CFAE23A1D93B0059F9C1 /* ServiceFactory.swift */; };
 		D853867F239EB70000E2BB1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D853867E239EB70000E2BB1F /* AppDelegate.swift */; };
@@ -161,6 +163,7 @@
 		D840750A23AA18A600121170 /* FirestoreEntityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreEntityService.swift; sourceTree = "<group>"; };
 		D840754E23AA262E00121170 /* play2048_dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = play2048_dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8450E2623AD93B200296676 /* GamePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePresenterTests.swift; sourceTree = "<group>"; };
+		D8450E2A23AEC90B00296676 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		D850CFAB23A1D5B90059F9C1 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		D850CFAE23A1D93B0059F9C1 /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		D853867B239EB70000E2BB1F /* play2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = play2048.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -369,6 +372,7 @@
 			children = (
 				D858129523A417C1007809C1 /* HighScores */,
 				D85386E4239EC38F00E2BB1F /* Game */,
+				D8450E2A23AEC90B00296676 /* UIViewControllerExtension.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -781,6 +785,7 @@
 				D840753423AA262E00121170 /* UserInterface.swift in Sources */,
 				D840753523AA262E00121170 /* TileSetDelegate.swift in Sources */,
 				D840753623AA262E00121170 /* ScoreCD.swift in Sources */,
+				D8450E2C23AECB7500296676 /* UIViewControllerExtension.swift in Sources */,
 				D840753723AA262E00121170 /* TileCollectionViewCell.swift in Sources */,
 				D8FDCE9623AAF7B7006F4CE0 /* FirestoreEntity.swift in Sources */,
 				D840753823AA262E00121170 /* TileResult.swift in Sources */,
@@ -841,6 +846,7 @@
 				D8E71FF823A1CB2C001DDDE9 /* Model.xcdatamodeld in Sources */,
 				D85386C6239EBF1A00E2BB1F /* UserInterface.swift in Sources */,
 				D8E71FF423A0915F001DDDE9 /* TileSetDelegate.swift in Sources */,
+				D8450E2B23AEC90B00296676 /* UIViewControllerExtension.swift in Sources */,
 				D85812B523A5D810007809C1 /* ScoreCD.swift in Sources */,
 				D8E71FDF239ECD48001DDDE9 /* TileCollectionViewCell.swift in Sources */,
 				D8D3531E23AAC17F00E4B7B8 /* FirestoreEntity.swift in Sources */,

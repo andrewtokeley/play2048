@@ -14,6 +14,7 @@ final class HighScoresPresenter: Presenter {
     override func viewIsAboutToAppear() {
         
         //view.displayTitle(title: "High Scores")
+        view.displaySpinner(show: true)
         interactor.fetchHighScores()
     }
 }
@@ -32,6 +33,7 @@ extension HighScoresPresenter: HighScoresPresenterApi {
 //    }
     
     func didFetchHighScores(scores: [Score]) {
+        view.displaySpinner(show: false)
         view.displayHighscores(scores: scores)
     }
 }

@@ -18,6 +18,8 @@ protocol GameRouterApi: RouterProtocol {
 //MARK: - GameView API
 protocol GameViewApi: UserInterfaceProtocol {
     
+    func displaySpinner(show: Bool)
+    
     func showNewGameOverlay(show: Bool)
     
     /// Update the display to show the given `TileSet`
@@ -69,17 +71,14 @@ protocol GamePresenterApi: PresenterProtocol {
     func didSelectQuitGame()
     
     /// Interactor will call this once a game has been initialised and is ready to play
-    //func gameInitialised()
+    func gameInitialised()
 }
 
 //MARK: - GameInteractor API
 protocol GameInteractorApi: InteractorProtocol {
     
-    /// requests the interactor to end the game and check the scores.
-    //func endGame()
-    
     /// Initialise new game
-    func newGame(tileSet: TileSet)
+    func newGame(tileSet: TileSet, showFirstTiles: Bool)
     
     /**
      Moves the tiles in the given direction and returns information about the score and tileSet state.
@@ -106,8 +105,11 @@ protocol GameInteractorApi: InteractorProtocol {
     func saveScore(score: Score, completion: (() -> Void)?)
 }
 
-extension GameInteractorApi {
-    func newGame(tileSet: TileSet = TileSet(rows: 4, columns: 4)) {
-        self.newGame(tileSet: tileSet)
-    }
-}
+//extension GameInteractorApi {
+//    /**
+//     Extend GameInteractor to include default parameters for `newGame` method
+//     */
+//    func newGame(tileSet: TileSet = TileSet(rows: 4, columns: 4), showFirstTiles: Bool = true) {
+//        self.newGame(tileSet: tileSet, showFirstTiles: showFirstTiles)
+//    }
+//}

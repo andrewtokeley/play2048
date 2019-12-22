@@ -14,7 +14,7 @@ protocol HighScoresRouterApi: RouterProtocol {
 //MARK: - HighScoresView API
 protocol HighScoresViewApi: UserInterfaceProtocol {
     
-    //func displayTitle(title: String)
+    func displaySpinner(show: Bool)
     
     func displayHighscores(scores: [Score])
     

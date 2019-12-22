@@ -14,14 +14,22 @@ final class GamePresenter: Presenter {
     
     var isPlayingGame: Bool = false
     let WIN_GOAL = 2048
+    let COLUMNS: Int = 4
+    let ROWS: Int = 4
     
     override func viewHasLoaded() {
         
+        view.displaySpinner(show: true)
+        
         // reset the grid and highscore
-        interactor.newGame()
+        interactor.newGame(tileSet: TileSet(rows: ROWS, columns: COLUMNS), showFirstTiles: false)
         
         // add overlay to start playing
         view.showNewGameOverlay(show: true)
+    }
+    
+    func gameInitialised() {
+        view.displaySpinner(show: false)
     }
     
     func processEndOfGame(scoreValue: Int, highestTileValue: Int, won: Bool) {
@@ -72,12 +80,16 @@ final class GamePresenter: Presenter {
 extension GamePresenter: GamePresenterApi {
         
     func didSelectNewGame() {
+        
+        view.displaySpinner(show: true)
+        
         // hide overlay
         view.showNewGameOverlay(show: false)
         
         // start a new game
         isPlayingGame = true
-        interactor.newGame()
+        
+        interactor.newGame(tileSet: TileSet(rows: ROWS, columns: COLUMNS), showFirstTiles: true)
     }
     
     func didSelectQuitGame() {

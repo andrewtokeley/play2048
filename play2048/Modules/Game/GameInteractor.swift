@@ -30,7 +30,7 @@ final class GameInteractor: Interactor {
 // MARK: - GameInteractor API
 extension GameInteractor: GameInteractorApi {
 
-    func newGame(tileSet: TileSet) {
+    func newGame(tileSet: TileSet, showFirstTiles: Bool) {
 
         game = Game()
         
@@ -40,16 +40,18 @@ extension GameInteractor: GameInteractorApi {
         
         self.tileSet?.delegate = self
         
-        // Place two random tiles
-        self.tileSet?.addTile(self.tileSet!.randomSpaceGridReference()!, tile: Tile(value: 2))
-        self.tileSet?.addTile(self.tileSet!.randomSpaceGridReference()!, tile: Tile(value: 2))
-
+        if showFirstTiles {
+            // Place two random tiles
+            self.tileSet?.addTile(self.tileSet!.randomSpaceGridReference()!, tile: Tile(value: 2))
+            self.tileSet?.addTile(self.tileSet!.randomSpaceGridReference()!, tile: Tile(value: 2))
+        }
+        
         currentHighestValue = self.tileSet?.highestTileValue ?? 2
         
         // This will clear the score to zero
         presenter.didUpdateScore(scoreValue: score)
         
-        // Display the initial tiles
+        // Display the initial grid
         presenter.didUpdateTileSet(tileSet: self.tileSet!)
         
         // Get the latest highscores
@@ -67,6 +69,8 @@ extension GameInteractor: GameInteractorApi {
                 self.lowestHighScore = 2
                 self.currentHighScore = 2
             }
+            
+            self.presenter.gameInitialised()
         }
     }
     

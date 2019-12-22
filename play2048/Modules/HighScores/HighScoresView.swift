@@ -10,7 +10,10 @@ import UIKit
 
 //MARK: HighScoresView Class
 final class HighScoresView: UserInterface {
+    
     fileprivate let CELL_ID = "cell"
+    fileprivate var spinnerView: UIView?
+    
     var scores = [Score]()
     
     // MARK: - Subviews
@@ -142,9 +145,13 @@ extension HighScoresView: UITableViewDataSource {
 //MARK: - HighScoresView API
 extension HighScoresView: HighScoresViewApi {
     
-//    func displayTitle(title: String) {
-//        titleLabel.text = title
-//    }
+    func displaySpinner(show: Bool) {
+        if show {
+            self.spinnerView = self.showSpinner(onView: self.view)
+        } else {
+            self.removeSpinner(spinnerView: self.spinnerView)
+        }
+    }
     
     func displayHighscores(scores: [Score]) {
         self.scores = scores

@@ -12,6 +12,8 @@ import UIKit
 //MARK: GameView Class
 final class GameView: UserInterface {
     
+    var spinnerView: UIView?
+    
     private let CELL_ID = "tile"
     private var tileSet: TileSet?
     private let GRID_SPACING: CGFloat = 5
@@ -52,6 +54,8 @@ final class GameView: UserInterface {
         label.font = UIFont(name: "Arial", size: 20)
         label.text = "high"
         label.textColor = .lightGray
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapHighScore)))
         return label
     }()
     
@@ -238,6 +242,14 @@ extension GameView: UITextFieldDelegate {
 
 //MARK: - GameView API
 extension GameView: GameViewApi {
+    
+    func displaySpinner(show: Bool) {
+        if show {
+            self.spinnerView = self.showSpinner(onView: self.view)
+        } else {
+            self.removeSpinner(spinnerView: self.spinnerView)
+        }
+    }
     
     func showNewGameOverlay(show: Bool) {
         self.newGameOverlay.alpha = show ? 0.5 : 0
