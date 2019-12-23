@@ -64,6 +64,8 @@
 		D8450E2923AE0BB300296676 /* GamePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8450E2623AD93B200296676 /* GamePresenterTests.swift */; };
 		D8450E2B23AEC90B00296676 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8450E2A23AEC90B00296676 /* UIViewControllerExtension.swift */; };
 		D8450E2C23AECB7500296676 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8450E2A23AEC90B00296676 /* UIViewControllerExtension.swift */; };
+		D84DC18123B15CF200303D19 /* GameSetupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC18023B15CF200303D19 /* GameSetupData.swift */; };
+		D84DC18223B15CF200303D19 /* GameSetupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC18023B15CF200303D19 /* GameSetupData.swift */; };
 		D850CFAC23A1D5B90059F9C1 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850CFAB23A1D5B90059F9C1 /* DataError.swift */; };
 		D850CFAF23A1D93B0059F9C1 /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850CFAE23A1D93B0059F9C1 /* ServiceFactory.swift */; };
 		D853867F239EB70000E2BB1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D853867E239EB70000E2BB1F /* AppDelegate.swift */; };
@@ -103,6 +105,22 @@
 		D85812AF23A5D289007809C1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85812AE23A5D289007809C1 /* Game.swift */; };
 		D85D9D1623B068AD000FC9E1 /* HighScoresSetupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1523B068AD000FC9E1 /* HighScoresSetupData.swift */; };
 		D85D9D1723B06AEA000FC9E1 /* HighScoresSetupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1523B068AD000FC9E1 /* HighScoresSetupData.swift */; };
+		D85D9D1923B077FC000FC9E1 /* LaunchScreen-2048.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85D9D1823B077FC000FC9E1 /* LaunchScreen-2048.storyboard */; };
+		D85D9D1A23B077FC000FC9E1 /* LaunchScreen-2048.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85D9D1823B077FC000FC9E1 /* LaunchScreen-2048.storyboard */; };
+		D85D9D2223B1488B000FC9E1 /* Loader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85D9D1B23B1488A000FC9E1 /* Loader.storyboard */; };
+		D85D9D2323B1488B000FC9E1 /* Loader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85D9D1B23B1488A000FC9E1 /* Loader.storyboard */; };
+		D85D9D2423B1488B000FC9E1 /* LoaderDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1C23B1488B000FC9E1 /* LoaderDisplayData.swift */; };
+		D85D9D2523B1488B000FC9E1 /* LoaderDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1C23B1488B000FC9E1 /* LoaderDisplayData.swift */; };
+		D85D9D2623B1488B000FC9E1 /* LoaderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1D23B1488B000FC9E1 /* LoaderPresenter.swift */; };
+		D85D9D2723B1488B000FC9E1 /* LoaderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1D23B1488B000FC9E1 /* LoaderPresenter.swift */; };
+		D85D9D2823B1488B000FC9E1 /* LoaderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1E23B1488B000FC9E1 /* LoaderRouter.swift */; };
+		D85D9D2923B1488B000FC9E1 /* LoaderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1E23B1488B000FC9E1 /* LoaderRouter.swift */; };
+		D85D9D2A23B1488B000FC9E1 /* LoaderModuleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1F23B1488B000FC9E1 /* LoaderModuleApi.swift */; };
+		D85D9D2B23B1488B000FC9E1 /* LoaderModuleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1F23B1488B000FC9E1 /* LoaderModuleApi.swift */; };
+		D85D9D2C23B1488B000FC9E1 /* LoaderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D2023B1488B000FC9E1 /* LoaderInteractor.swift */; };
+		D85D9D2D23B1488B000FC9E1 /* LoaderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D2023B1488B000FC9E1 /* LoaderInteractor.swift */; };
+		D85D9D2E23B1488B000FC9E1 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D2123B1488B000FC9E1 /* LoaderView.swift */; };
+		D85D9D2F23B1488B000FC9E1 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D2123B1488B000FC9E1 /* LoaderView.swift */; };
 		D8D3531E23AAC17F00E4B7B8 /* FirestoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3531D23AAC17F00E4B7B8 /* FirestoreEntity.swift */; };
 		D8D3532023AAC28100E4B7B8 /* FirestoreScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3531F23AAC28100E4B7B8 /* FirestoreScore.swift */; };
 		D8D3532223AAC7A900E4B7B8 /* FirestoreScoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3532123AAC7A900E4B7B8 /* FirestoreScoreService.swift */; };
@@ -158,6 +176,7 @@
 		D840754E23AA262E00121170 /* play2048_dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = play2048_dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8450E2623AD93B200296676 /* GamePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePresenterTests.swift; sourceTree = "<group>"; };
 		D8450E2A23AEC90B00296676 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		D84DC18023B15CF200303D19 /* GameSetupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupData.swift; sourceTree = "<group>"; };
 		D850CFAB23A1D5B90059F9C1 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		D850CFAE23A1D93B0059F9C1 /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		D853867B239EB70000E2BB1F /* play2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = play2048.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +226,14 @@
 		D85812AC23A55E6A007809C1 /* HighScoreEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreEntryTableViewCell.swift; sourceTree = "<group>"; };
 		D85812AE23A5D289007809C1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		D85D9D1523B068AD000FC9E1 /* HighScoresSetupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresSetupData.swift; sourceTree = "<group>"; };
+		D85D9D1823B077FC000FC9E1 /* LaunchScreen-2048.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "LaunchScreen-2048.storyboard"; sourceTree = "<group>"; };
+		D85D9D1B23B1488A000FC9E1 /* Loader.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loader.storyboard; sourceTree = "<group>"; };
+		D85D9D1C23B1488B000FC9E1 /* LoaderDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderDisplayData.swift; sourceTree = "<group>"; };
+		D85D9D1D23B1488B000FC9E1 /* LoaderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderPresenter.swift; sourceTree = "<group>"; };
+		D85D9D1E23B1488B000FC9E1 /* LoaderRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderRouter.swift; sourceTree = "<group>"; };
+		D85D9D1F23B1488B000FC9E1 /* LoaderModuleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderModuleApi.swift; sourceTree = "<group>"; };
+		D85D9D2023B1488B000FC9E1 /* LoaderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderInteractor.swift; sourceTree = "<group>"; };
+		D85D9D2123B1488B000FC9E1 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		D8D3531D23AAC17F00E4B7B8 /* FirestoreEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreEntity.swift; sourceTree = "<group>"; };
 		D8D3531F23AAC28100E4B7B8 /* FirestoreScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreScore.swift; sourceTree = "<group>"; };
 		D8D3532123AAC7A900E4B7B8 /* FirestoreScoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreScoreService.swift; sourceTree = "<group>"; };
@@ -328,11 +355,11 @@
 				D853867E239EB70000E2BB1F /* AppDelegate.swift */,
 				D8538684239EB70600E2BB1F /* Assets.xcassets */,
 				D8538689239EB70600E2BB1F /* LaunchScreen.storyboard */,
+				D85D9D1823B077FC000FC9E1 /* LaunchScreen-2048.storyboard */,
 				D8E71FF523A1CB14001DDDE9 /* Data */,
 				D8E71FE0239F1FDC001DDDE9 /* Model */,
 				D85386A0239EBA9F00E2BB1F /* Modules */,
 				D85386D1239EBFD400E2BB1F /* PodImports */,
-				D85386D2239EC01100E2BB1F /* Viperit */,
 			);
 			path = play2048;
 			sourceTree = "<group>";
@@ -350,9 +377,11 @@
 		D85386A0239EBA9F00E2BB1F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D85D9D3023B14895000FC9E1 /* Loader */,
 				D858129523A417C1007809C1 /* HighScores */,
 				D85386E4239EC38F00E2BB1F /* Game */,
 				D8450E2A23AEC90B00296676 /* UIViewControllerExtension.swift */,
+				D85386D3239EC03200E2BB1F /* AppModules.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -402,14 +431,6 @@
 			path = PodImports;
 			sourceTree = "<group>";
 		};
-		D85386D2239EC01100E2BB1F /* Viperit */ = {
-			isa = PBXGroup;
-			children = (
-				D85386D3239EC03200E2BB1F /* AppModules.swift */,
-			);
-			path = Viperit;
-			sourceTree = "<group>";
-		};
 		D85386E4239EC38F00E2BB1F /* Game */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +442,7 @@
 				D85386DD239EC38800E2BB1F /* GameView.swift */,
 				D8E71FDC239ECB04001DDDE9 /* TileCollectionViewCell.xib */,
 				D8E71FDE239ECD48001DDDE9 /* TileCollectionViewCell.swift */,
+				D84DC18023B15CF200303D19 /* GameSetupData.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -439,6 +461,20 @@
 				D85D9D1523B068AD000FC9E1 /* HighScoresSetupData.swift */,
 			);
 			path = HighScores;
+			sourceTree = "<group>";
+		};
+		D85D9D3023B14895000FC9E1 /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				D85D9D1B23B1488A000FC9E1 /* Loader.storyboard */,
+				D85D9D1C23B1488B000FC9E1 /* LoaderDisplayData.swift */,
+				D85D9D1D23B1488B000FC9E1 /* LoaderPresenter.swift */,
+				D85D9D1E23B1488B000FC9E1 /* LoaderRouter.swift */,
+				D85D9D1F23B1488B000FC9E1 /* LoaderModuleApi.swift */,
+				D85D9D2023B1488B000FC9E1 /* LoaderInteractor.swift */,
+				D85D9D2123B1488B000FC9E1 /* LoaderView.swift */,
+			);
+			path = Loader;
 			sourceTree = "<group>";
 		};
 		D8E71FE0239F1FDC001DDDE9 /* Model */ = {
@@ -591,7 +627,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D840754723AA262E00121170 /* TileCollectionViewCell.xib in Resources */,
+				D85D9D1A23B077FC000FC9E1 /* LaunchScreen-2048.storyboard in Resources */,
 				D840754823AA262E00121170 /* LaunchScreen.storyboard in Resources */,
+				D85D9D2323B1488B000FC9E1 /* Loader.storyboard in Resources */,
 				D840754923AA262E00121170 /* HighScoreEntryTableViewCell.xib in Resources */,
 				D840754A23AA262E00121170 /* Assets.xcassets in Resources */,
 				D81C4CEF23AAB2EE0078F1D2 /* GoogleService-Info.plist in Resources */,
@@ -603,7 +641,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8E71FDD239ECB04001DDDE9 /* TileCollectionViewCell.xib in Resources */,
+				D85D9D1923B077FC000FC9E1 /* LaunchScreen-2048.storyboard in Resources */,
 				D8FDCE9A23AB06FE006F4CE0 /* GoogleService-Info.plist in Resources */,
+				D85D9D2223B1488B000FC9E1 /* Loader.storyboard in Resources */,
 				D853868B239EB70600E2BB1F /* LaunchScreen.storyboard in Resources */,
 				D85812AB23A55CEB007809C1 /* HighScoreEntryTableViewCell.xib in Resources */,
 				D8538685239EB70600E2BB1F /* Assets.xcassets in Resources */,
@@ -738,6 +778,7 @@
 				D840751923AA262E00121170 /* HighScoreEntryTableViewCell.swift in Sources */,
 				D840751A23AA262E00121170 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				D840751B23AA262E00121170 /* NSArray+PureLayout.m in Sources */,
+				D84DC18223B15CF200303D19 /* GameSetupData.swift in Sources */,
 				D840751C23AA262E00121170 /* Module.swift in Sources */,
 				D840751D23AA262E00121170 /* Direction.swift in Sources */,
 				D840751E23AA262E00121170 /* GameRouter.swift in Sources */,
@@ -748,10 +789,13 @@
 				D840752323AA262E00121170 /* ViperComponent.swift in Sources */,
 				D840752423AA262E00121170 /* ViperitModule.swift in Sources */,
 				D840752623AA262E00121170 /* GameInteractor.swift in Sources */,
+				D85D9D2523B1488B000FC9E1 /* LoaderDisplayData.swift in Sources */,
 				D840752723AA262E00121170 /* GridReference.swift in Sources */,
 				D840752823AA262E00121170 /* DisplayData.swift in Sources */,
 				D840752923AA262E00121170 /* TileSet.swift in Sources */,
 				D840752A23AA262E00121170 /* String+.swift in Sources */,
+				D85D9D2F23B1488B000FC9E1 /* LoaderView.swift in Sources */,
+				D85D9D2B23B1488B000FC9E1 /* LoaderModuleApi.swift in Sources */,
 				D840752B23AA262E00121170 /* Board.swift in Sources */,
 				D840752C23AA262E00121170 /* DataError.swift in Sources */,
 				D840752D23AA262E00121170 /* Interactor.swift in Sources */,
@@ -768,6 +812,7 @@
 				D8FDCE9623AAF7B7006F4CE0 /* FirestoreEntity.swift in Sources */,
 				D840753823AA262E00121170 /* TileResult.swift in Sources */,
 				D840753923AA262E00121170 /* HighScoresDisplayData.swift in Sources */,
+				D85D9D2D23B1488B000FC9E1 /* LoaderInteractor.swift in Sources */,
 				D840753A23AA262E00121170 /* ViperitError.swift in Sources */,
 				D840753B23AA262E00121170 /* HighScoresInteractor.swift in Sources */,
 				D840753C23AA262E00121170 /* Tile.swift in Sources */,
@@ -775,7 +820,9 @@
 				D840753E23AA262E00121170 /* FirestoreEntityService.swift in Sources */,
 				D8FDCE9723AAF7BA006F4CE0 /* FirestoreScore.swift in Sources */,
 				D840753F23AA262E00121170 /* GameView.swift in Sources */,
+				D85D9D2923B1488B000FC9E1 /* LoaderRouter.swift in Sources */,
 				D840754123AA262E00121170 /* Score.swift in Sources */,
+				D85D9D2723B1488B000FC9E1 /* LoaderPresenter.swift in Sources */,
 				D840754223AA262E00121170 /* UserInterface+Table.swift in Sources */,
 				D840754323AA262E00121170 /* HighScoresView.swift in Sources */,
 			);
@@ -796,6 +843,7 @@
 				D85812AD23A55E6A007809C1 /* HighScoreEntryTableViewCell.swift in Sources */,
 				D85386B3239EBCDD00E2BB1F /* NSLayoutConstraint+PureLayout.m in Sources */,
 				D85386B1239EBCDD00E2BB1F /* NSArray+PureLayout.m in Sources */,
+				D84DC18123B15CF200303D19 /* GameSetupData.swift in Sources */,
 				D85386C5239EBF1A00E2BB1F /* Module.swift in Sources */,
 				D8E71FEC239F1FFB001DDDE9 /* Direction.swift in Sources */,
 				D85386E0239EC38800E2BB1F /* GameRouter.swift in Sources */,
@@ -806,10 +854,13 @@
 				D85386C2239EBF1A00E2BB1F /* ViperComponent.swift in Sources */,
 				D85386C4239EBF1A00E2BB1F /* ViperitModule.swift in Sources */,
 				D85386E2239EC38800E2BB1F /* GameInteractor.swift in Sources */,
+				D85D9D2423B1488B000FC9E1 /* LoaderDisplayData.swift in Sources */,
 				D8E71FE9239F1FFB001DDDE9 /* GridReference.swift in Sources */,
 				D85386BE239EBF1A00E2BB1F /* DisplayData.swift in Sources */,
 				D8E71FE7239F1FFB001DDDE9 /* TileSet.swift in Sources */,
 				D85386CE239EBFAA00E2BB1F /* String+.swift in Sources */,
+				D85D9D2E23B1488B000FC9E1 /* LoaderView.swift in Sources */,
+				D85D9D2A23B1488B000FC9E1 /* LoaderModuleApi.swift in Sources */,
 				D8E71FEA239F1FFB001DDDE9 /* Board.swift in Sources */,
 				D8D3532023AAC28100E4B7B8 /* FirestoreScore.swift in Sources */,
 				D850CFAC23A1D5B90059F9C1 /* DataError.swift in Sources */,
@@ -826,6 +877,7 @@
 				D8E71FDF239ECD48001DDDE9 /* TileCollectionViewCell.swift in Sources */,
 				D8D3531E23AAC17F00E4B7B8 /* FirestoreEntity.swift in Sources */,
 				D8E71FE8239F1FFB001DDDE9 /* TileResult.swift in Sources */,
+				D85D9D2C23B1488B000FC9E1 /* LoaderInteractor.swift in Sources */,
 				D858129E23A417D6007809C1 /* HighScoresDisplayData.swift in Sources */,
 				D85386C3239EBF1A00E2BB1F /* ViperitError.swift in Sources */,
 				D85812A223A417D6007809C1 /* HighScoresInteractor.swift in Sources */,
@@ -833,7 +885,9 @@
 				D858129F23A417D6007809C1 /* HighScoresPresenter.swift in Sources */,
 				D840750B23AA18A600121170 /* FirestoreEntityService.swift in Sources */,
 				D85386E3239EC38800E2BB1F /* GameView.swift in Sources */,
+				D85D9D2823B1488B000FC9E1 /* LoaderRouter.swift in Sources */,
 				D8E71FFC23A1CC2E001DDDE9 /* Score.swift in Sources */,
+				D85D9D2623B1488B000FC9E1 /* LoaderPresenter.swift in Sources */,
 				D85386D0239EBFAA00E2BB1F /* UserInterface+Table.swift in Sources */,
 				D85812A323A417D6007809C1 /* HighScoresView.swift in Sources */,
 			);

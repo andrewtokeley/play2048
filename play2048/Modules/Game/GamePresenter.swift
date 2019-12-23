@@ -17,15 +17,13 @@ final class GamePresenter: Presenter {
     let COLUMNS: Int = 4
     let ROWS: Int = 4
     
-    override func viewHasLoaded() {
-        
-        view.displaySpinner(show: true)
-        
-        // reset the grid and highscore
-        interactor.newGame(tileSet: TileSet(rows: ROWS, columns: COLUMNS), showFirstTiles: false)
-        
-        // add overlay to start playing
-        view.showNewGameOverlay(show: true)
+    override func setupView(data: Any) {
+        if let data = data as? GameSetupData {
+            view.displayHighScore(scoreValue: data.highScore)
+            view.displayScore(scoreValue: 0)
+            view.displayTileSet(tileSet: TileSet(rows: 4, columns: 4))
+            view.showNewGameOverlay(show: true)
+        }
     }
     
     func gameInitialised() {
@@ -96,13 +94,8 @@ extension GamePresenter: GamePresenterApi {
     func didSelectNewGame() {
         
         view.displaySpinner(show: true)
-        
-        // hide overlay
         view.showNewGameOverlay(show: false)
-        
-        // start a new game
         isPlayingGame = true
-        
         interactor.newGame(tileSet: TileSet(rows: ROWS, columns: COLUMNS), showFirstTiles: true)
     }
     
@@ -119,7 +112,7 @@ extension GamePresenter: GamePresenterApi {
         if isPlayingGame {
             interactor.moveTiles(direction: direction) { (availableMoves, highestTileValue, scoreValue) in
                 
-                // display the score
+                // display the updated score
                 self.view.displayScore(scoreValue: scoreValue)
                 
                 let won =  highestTileValue == self.WIN_GOAL

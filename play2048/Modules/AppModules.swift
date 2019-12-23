@@ -13,8 +13,13 @@ import Foundation
 enum AppModules: String, ViperitModule {
     case game
     case highScores
+    case loader
     
     var viewType: ViperitViewType {
-        return .code
+        if self == .loader {
+            return .storyboard
+        } else {
+            return .code
+        }
     }
 }
