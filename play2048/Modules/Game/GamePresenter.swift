@@ -32,6 +32,22 @@ final class GamePresenter: Presenter {
         view.displaySpinner(show: false)
     }
     
+    func endOfGameTitleAndMessage(won: Bool, isTopTen: Bool, isHighScore: Bool) -> (title: String, message: String) {
+        
+        let title = won ? "You Won!" : "Game Over!"
+        var message =
+            won && isHighScore ? "Nice work, you reached \(String(self.WIN_GOAL)) AND got a new highscore. Wahoo!" :
+                (won && isTopTen ? "Nice work, you reached \(String(self.WIN_GOAL)) AND got a top ten score" :
+                    (won && !isTopTen ? "Nice work, you reached \(String(self.WIN_GOAL))! No highscore this time, sorry!" :
+                        (!won && isHighScore ? "YUS, new highscore!" :
+                            (!won && isTopTen ? "NOOICE, top 10 score!" : ""))))
+        
+        if isTopTen {
+          message += "\n\nEnter your initals (up to 5 characters)"
+        }
+        return (title: title, message: message)
+    }
+    
     func processEndOfGame(scoreValue: Int, highestTileValue: Int, won: Bool) {
         
         self.isPlayingGame = false
@@ -44,31 +60,29 @@ final class GamePresenter: Presenter {
                 self.view.displayHighScore(scoreValue: scoreValue)
             }
  
-            let title = won ? "You Won!" : "Game Over!"
-            var message =
-                won && isHighScore ? "Nice work, you reached \(String(self.WIN_GOAL)) AND got a new highscore. Wahoo!" :
-                    (won && isTopTen ? "Nice work, you reached \(String(self.WIN_GOAL)) AND got a top ten score" :
-                        (won && !isTopTen ? "Nice work, you reached \(String(self.WIN_GOAL))! No highscore this time, sorry!" :
-                            (!won && isHighScore ? "YUS, new highscore!" :
-                                (!won && isTopTen ? "NOOICE, top 10 score!" : ""))))
-            
+            let titleAndMessage = self.endOfGameTitleAndMessage(won: won, isTopTen: isTopTen, isHighScore: isHighScore)
+            let title = titleAndMessage.title
+            let message = titleAndMessage.message
+
             if isTopTen {
-            
-                message += "\n\nEnter your initals (up to 5 characters)"
                 
                 // need to get user's name
                 self.view.displayMessageAndGetString(title: title, message: message) { (name) in
                     
                     // save the score
+                    self.view.displaySpinner(show: true)
                     let score = Score(userName: name, dateTime: Date(), score: scoreValue, highestTileValue: highestTileValue)
+                    self.interactor.saveScore(score: score) { (addedScore, error) in
                     
-                    self.interactor.saveScore(score: score) {
-                        // ?
+                        self.view.displaySpinner(show: false)
+                        // show the high score module, highlighting the current score
+                        let data = HighScoresSetupData(highlightedScoreId: addedScore?.id)
+                        self.router.showHighScoreModule(data: data)
                     }
                 }
             } else {
                 self.view.displayMessage(title: title, message: message) {
-                    // ?
+                    // nothing left to do, this is just an info message
                 }
             }
 
@@ -126,7 +140,7 @@ extension GamePresenter: GamePresenterApi {
     }
     
     func didSelectHighScores() {
-        router.showHighScoreModule()
+        router.showHighScoreModule(data: nil)
     }
 }
 

@@ -11,7 +11,7 @@ import Foundation
 protocol ScoreServiceInterface {
 
     func highScores(completion: (([Score], Error?) -> Void)?)
-    func addScore(score: Score, completion: ((Error?) -> Void)?)
+    func addScore(score: Score, completion: ((Score?, Error?) -> Void)?)
     func deleteHighScores(completion: ((Error?) -> Void)?)
     
 }

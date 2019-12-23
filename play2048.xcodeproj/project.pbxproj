@@ -30,7 +30,6 @@
 		D840752223AA262E00121170 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FF1239F3446001DDDE9 /* UIColorExtension.swift */; };
 		D840752323AA262E00121170 /* ViperComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85386B9239EBF1A00E2BB1F /* ViperComponent.swift */; };
 		D840752423AA262E00121170 /* ViperitModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85386BB239EBF1A00E2BB1F /* ViperitModule.swift */; };
-		D840752523AA262E00121170 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FFF23A1D23D001DDDE9 /* CoreDataService.swift */; };
 		D840752623AA262E00121170 /* GameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85386DC239EC38800E2BB1F /* GameInteractor.swift */; };
 		D840752723AA262E00121170 /* GridReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FE3239F1FFB001DDDE9 /* GridReference.swift */; };
 		D840752823AA262E00121170 /* DisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85386B5239EBF1A00E2BB1F /* DisplayData.swift */; };
@@ -44,10 +43,8 @@
 		D840753023AA262E00121170 /* HighScoresRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D858129923A417D6007809C1 /* HighScoresRouter.swift */; };
 		D840753123AA262E00121170 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85812AE23A5D289007809C1 /* Game.swift */; };
 		D840753223AA262E00121170 /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D85386AC239EBCDD00E2BB1F /* ALView+PureLayout.m */; };
-		D840753323AA262E00121170 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FF623A1CB2C001DDDE9 /* Model.xcdatamodeld */; };
 		D840753423AA262E00121170 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85386BD239EBF1A00E2BB1F /* UserInterface.swift */; };
 		D840753523AA262E00121170 /* TileSetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FF323A0915E001DDDE9 /* TileSetDelegate.swift */; };
-		D840753623AA262E00121170 /* ScoreCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85812B423A5D810007809C1 /* ScoreCD.swift */; };
 		D840753723AA262E00121170 /* TileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FDE239ECD48001DDDE9 /* TileCollectionViewCell.swift */; };
 		D840753823AA262E00121170 /* TileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FE2239F1FFB001DDDE9 /* TileResult.swift */; };
 		D840753923AA262E00121170 /* HighScoresDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D858129723A417D6007809C1 /* HighScoresDisplayData.swift */; };
@@ -57,7 +54,6 @@
 		D840753D23AA262E00121170 /* HighScoresPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D858129823A417D6007809C1 /* HighScoresPresenter.swift */; };
 		D840753E23AA262E00121170 /* FirestoreEntityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D840750A23AA18A600121170 /* FirestoreEntityService.swift */; };
 		D840753F23AA262E00121170 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85386DD239EC38800E2BB1F /* GameView.swift */; };
-		D840754023AA262E00121170 /* CoreDataScoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FFD23A1CD58001DDDE9 /* CoreDataScoreService.swift */; };
 		D840754123AA262E00121170 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FFB23A1CC2E001DDDE9 /* Score.swift */; };
 		D840754223AA262E00121170 /* UserInterface+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85386CC239EBFAA00E2BB1F /* UserInterface+Table.swift */; };
 		D840754323AA262E00121170 /* HighScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D858129C23A417D6007809C1 /* HighScoresView.swift */; };
@@ -105,7 +101,8 @@
 		D85812AB23A55CEB007809C1 /* HighScoreEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D85812AA23A55CEB007809C1 /* HighScoreEntryTableViewCell.xib */; };
 		D85812AD23A55E6A007809C1 /* HighScoreEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85812AC23A55E6A007809C1 /* HighScoreEntryTableViewCell.swift */; };
 		D85812AF23A5D289007809C1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85812AE23A5D289007809C1 /* Game.swift */; };
-		D85812B523A5D810007809C1 /* ScoreCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85812B423A5D810007809C1 /* ScoreCD.swift */; };
+		D85D9D1623B068AD000FC9E1 /* HighScoresSetupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1523B068AD000FC9E1 /* HighScoresSetupData.swift */; };
+		D85D9D1723B06AEA000FC9E1 /* HighScoresSetupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D1523B068AD000FC9E1 /* HighScoresSetupData.swift */; };
 		D8D3531E23AAC17F00E4B7B8 /* FirestoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3531D23AAC17F00E4B7B8 /* FirestoreEntity.swift */; };
 		D8D3532023AAC28100E4B7B8 /* FirestoreScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3531F23AAC28100E4B7B8 /* FirestoreScore.swift */; };
 		D8D3532223AAC7A900E4B7B8 /* FirestoreScoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3532123AAC7A900E4B7B8 /* FirestoreScoreService.swift */; };
@@ -120,11 +117,8 @@
 		D8E71FF0239F20EF001DDDE9 /* TileSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FEF239F20EF001DDDE9 /* TileSetTests.swift */; };
 		D8E71FF2239F3446001DDDE9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FF1239F3446001DDDE9 /* UIColorExtension.swift */; };
 		D8E71FF423A0915F001DDDE9 /* TileSetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FF323A0915E001DDDE9 /* TileSetDelegate.swift */; };
-		D8E71FF823A1CB2C001DDDE9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FF623A1CB2C001DDDE9 /* Model.xcdatamodeld */; };
 		D8E71FFA23A1CBFD001DDDE9 /* ScoreServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FF923A1CBFD001DDDE9 /* ScoreServiceInterface.swift */; };
 		D8E71FFC23A1CC2E001DDDE9 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FFB23A1CC2E001DDDE9 /* Score.swift */; };
-		D8E71FFE23A1CD58001DDDE9 /* CoreDataScoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FFD23A1CD58001DDDE9 /* CoreDataScoreService.swift */; };
-		D8E7200023A1D23D001DDDE9 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E71FFF23A1D23D001DDDE9 /* CoreDataService.swift */; };
 		D8FDCE9623AAF7B7006F4CE0 /* FirestoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3531D23AAC17F00E4B7B8 /* FirestoreEntity.swift */; };
 		D8FDCE9723AAF7BA006F4CE0 /* FirestoreScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3531F23AAC28100E4B7B8 /* FirestoreScore.swift */; };
 		D8FDCE9823AAF7BF006F4CE0 /* FirestoreScoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3532123AAC7A900E4B7B8 /* FirestoreScoreService.swift */; };
@@ -212,7 +206,7 @@
 		D85812AA23A55CEB007809C1 /* HighScoreEntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighScoreEntryTableViewCell.xib; sourceTree = "<group>"; };
 		D85812AC23A55E6A007809C1 /* HighScoreEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreEntryTableViewCell.swift; sourceTree = "<group>"; };
 		D85812AE23A5D289007809C1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		D85812B423A5D810007809C1 /* ScoreCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCD.swift; sourceTree = "<group>"; };
+		D85D9D1523B068AD000FC9E1 /* HighScoresSetupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresSetupData.swift; sourceTree = "<group>"; };
 		D8D3531D23AAC17F00E4B7B8 /* FirestoreEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreEntity.swift; sourceTree = "<group>"; };
 		D8D3531F23AAC28100E4B7B8 /* FirestoreScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreScore.swift; sourceTree = "<group>"; };
 		D8D3532123AAC7A900E4B7B8 /* FirestoreScoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreScoreService.swift; sourceTree = "<group>"; };
@@ -227,11 +221,8 @@
 		D8E71FEF239F20EF001DDDE9 /* TileSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSetTests.swift; sourceTree = "<group>"; };
 		D8E71FF1239F3446001DDDE9 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		D8E71FF323A0915E001DDDE9 /* TileSetDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSetDelegate.swift; sourceTree = "<group>"; };
-		D8E71FF723A1CB2C001DDDE9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D8E71FF923A1CBFD001DDDE9 /* ScoreServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreServiceInterface.swift; sourceTree = "<group>"; };
 		D8E71FFB23A1CC2E001DDDE9 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
-		D8E71FFD23A1CD58001DDDE9 /* CoreDataScoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataScoreService.swift; sourceTree = "<group>"; };
-		D8E71FFF23A1D23D001DDDE9 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		D8FDCE9923AB06FE006F4CE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F48B804CCFD34A7D020BA17C /* Pods-2048_shared-play2048.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2048_shared-play2048.release.xcconfig"; path = "Target Support Files/Pods-2048_shared-play2048/Pods-2048_shared-play2048.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -304,17 +295,6 @@
 				D8D3532123AAC7A900E4B7B8 /* FirestoreScoreService.swift */,
 			);
 			path = Firestore;
-			sourceTree = "<group>";
-		};
-		D850CFAD23A1D89D0059F9C1 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				D8E71FFF23A1D23D001DDDE9 /* CoreDataService.swift */,
-				D8E71FFD23A1CD58001DDDE9 /* CoreDataScoreService.swift */,
-				D8E71FF623A1CB2C001DDDE9 /* Model.xcdatamodeld */,
-				D85812B423A5D810007809C1 /* ScoreCD.swift */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		D8538672239EB70000E2BB1F = {
@@ -456,6 +436,7 @@
 				D858129C23A417D6007809C1 /* HighScoresView.swift */,
 				D85812AA23A55CEB007809C1 /* HighScoreEntryTableViewCell.xib */,
 				D85812AC23A55E6A007809C1 /* HighScoreEntryTableViewCell.swift */,
+				D85D9D1523B068AD000FC9E1 /* HighScoresSetupData.swift */,
 			);
 			path = HighScores;
 			sourceTree = "<group>";
@@ -481,7 +462,6 @@
 			isa = PBXGroup;
 			children = (
 				D840750923AA186100121170 /* Firestore */,
-				D850CFAD23A1D89D0059F9C1 /* CoreData */,
 				D8E71FF923A1CBFD001DDDE9 /* ScoreServiceInterface.swift */,
 				D850CFAB23A1D5B90059F9C1 /* DataError.swift */,
 				D850CFAE23A1D93B0059F9C1 /* ServiceFactory.swift */,
@@ -767,7 +747,6 @@
 				D840752223AA262E00121170 /* UIColorExtension.swift in Sources */,
 				D840752323AA262E00121170 /* ViperComponent.swift in Sources */,
 				D840752423AA262E00121170 /* ViperitModule.swift in Sources */,
-				D840752523AA262E00121170 /* CoreDataService.swift in Sources */,
 				D840752623AA262E00121170 /* GameInteractor.swift in Sources */,
 				D840752723AA262E00121170 /* GridReference.swift in Sources */,
 				D840752823AA262E00121170 /* DisplayData.swift in Sources */,
@@ -781,10 +760,9 @@
 				D840753023AA262E00121170 /* HighScoresRouter.swift in Sources */,
 				D840753123AA262E00121170 /* Game.swift in Sources */,
 				D840753223AA262E00121170 /* ALView+PureLayout.m in Sources */,
-				D840753323AA262E00121170 /* Model.xcdatamodeld in Sources */,
+				D85D9D1723B06AEA000FC9E1 /* HighScoresSetupData.swift in Sources */,
 				D840753423AA262E00121170 /* UserInterface.swift in Sources */,
 				D840753523AA262E00121170 /* TileSetDelegate.swift in Sources */,
-				D840753623AA262E00121170 /* ScoreCD.swift in Sources */,
 				D8450E2C23AECB7500296676 /* UIViewControllerExtension.swift in Sources */,
 				D840753723AA262E00121170 /* TileCollectionViewCell.swift in Sources */,
 				D8FDCE9623AAF7B7006F4CE0 /* FirestoreEntity.swift in Sources */,
@@ -797,7 +775,6 @@
 				D840753E23AA262E00121170 /* FirestoreEntityService.swift in Sources */,
 				D8FDCE9723AAF7BA006F4CE0 /* FirestoreScore.swift in Sources */,
 				D840753F23AA262E00121170 /* GameView.swift in Sources */,
-				D840754023AA262E00121170 /* CoreDataScoreService.swift in Sources */,
 				D840754123AA262E00121170 /* Score.swift in Sources */,
 				D840754223AA262E00121170 /* UserInterface+Table.swift in Sources */,
 				D840754323AA262E00121170 /* HighScoresView.swift in Sources */,
@@ -828,7 +805,6 @@
 				D8E71FF2239F3446001DDDE9 /* UIColorExtension.swift in Sources */,
 				D85386C2239EBF1A00E2BB1F /* ViperComponent.swift in Sources */,
 				D85386C4239EBF1A00E2BB1F /* ViperitModule.swift in Sources */,
-				D8E7200023A1D23D001DDDE9 /* CoreDataService.swift in Sources */,
 				D85386E2239EC38800E2BB1F /* GameInteractor.swift in Sources */,
 				D8E71FE9239F1FFB001DDDE9 /* GridReference.swift in Sources */,
 				D85386BE239EBF1A00E2BB1F /* DisplayData.swift in Sources */,
@@ -842,12 +818,11 @@
 				D85386CD239EBFAA00E2BB1F /* UserInterface+Collection.swift in Sources */,
 				D85812A023A417D6007809C1 /* HighScoresRouter.swift in Sources */,
 				D85812AF23A5D289007809C1 /* Game.swift in Sources */,
+				D85D9D1623B068AD000FC9E1 /* HighScoresSetupData.swift in Sources */,
 				D85386B2239EBCDD00E2BB1F /* ALView+PureLayout.m in Sources */,
-				D8E71FF823A1CB2C001DDDE9 /* Model.xcdatamodeld in Sources */,
 				D85386C6239EBF1A00E2BB1F /* UserInterface.swift in Sources */,
 				D8E71FF423A0915F001DDDE9 /* TileSetDelegate.swift in Sources */,
 				D8450E2B23AEC90B00296676 /* UIViewControllerExtension.swift in Sources */,
-				D85812B523A5D810007809C1 /* ScoreCD.swift in Sources */,
 				D8E71FDF239ECD48001DDDE9 /* TileCollectionViewCell.swift in Sources */,
 				D8D3531E23AAC17F00E4B7B8 /* FirestoreEntity.swift in Sources */,
 				D8E71FE8239F1FFB001DDDE9 /* TileResult.swift in Sources */,
@@ -858,7 +833,6 @@
 				D858129F23A417D6007809C1 /* HighScoresPresenter.swift in Sources */,
 				D840750B23AA18A600121170 /* FirestoreEntityService.swift in Sources */,
 				D85386E3239EC38800E2BB1F /* GameView.swift in Sources */,
-				D8E71FFE23A1CD58001DDDE9 /* CoreDataScoreService.swift in Sources */,
 				D8E71FFC23A1CC2E001DDDE9 /* Score.swift in Sources */,
 				D85386D0239EBFAA00E2BB1F /* UserInterface+Table.swift in Sources */,
 				D85812A323A417D6007809C1 /* HighScoresView.swift in Sources */,
@@ -1194,19 +1168,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D8E71FF623A1CB2C001DDDE9 /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D8E71FF723A1CB2C001DDDE9 /* Model.xcdatamodel */,
-			);
-			currentVersion = D8E71FF723A1CB2C001DDDE9 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D8538673239EB70000E2BB1F /* Project object */;
 }

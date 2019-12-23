@@ -16,9 +16,9 @@ final class GameRouter: Router {
 // MARK: - GameRouter API
 extension GameRouter: GameRouterApi {
     
-    func showHighScoreModule() {
+    func showHighScoreModule(data: HighScoresSetupData?) {
         let module = AppModules.highScores.build()
-        module.router.show(from: viewController, embedInNavController: false, setupData: nil)
+        module.router.show(from: viewController, embedInNavController: false, setupData: data)
     }
 }
 

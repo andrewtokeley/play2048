@@ -13,6 +13,7 @@ final class HighScoresView: UserInterface {
     
     fileprivate let CELL_ID = "cell"
     fileprivate var spinnerView: UIView?
+    fileprivate var highlightedScoreId: String?
     
     var scores = [Score]()
     
@@ -24,17 +25,7 @@ final class HighScoresView: UserInterface {
         view.addTarget(self, action: #selector(didTapClose), for: .touchUpInside)
         return view
     }()
-    
-//    lazy var titleLabel: UILabel = {
-//        let view = UILabel()
-//        view.font = UIFont(name: "Arial", size: 50)
-//        view.textAlignment = .center
-//        view.textColor = .gridBackground
-//        view.isUserInteractionEnabled = true
-//        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHeading)))
-//        return view
-//    }()
-    
+        
     lazy var highScoreTable: UITableView = {
         let view = UITableView(frame: CGRect.zero, style: .plain)
         view.register(UINib(nibName: "HighScoreEntryTableViewCell", bundle: nil), forCellReuseIdentifier: CELL_ID)
@@ -52,18 +43,6 @@ final class HighScoresView: UserInterface {
         presenter.didSelectClose()
     }
     
-//    @objc func tapHeading(sender: UILabel) {
-//        let alert = UIAlertController(title: "Delete All High Scores", message: "Are you sure you want to do this?", preferredStyle: .alert)
-//
-//        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
-//            self.presenter.didTapHeading()
-//        })
-//
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//
-//        self.present(alert, animated: true, completion: nil)
-//    }
-    
     // MARK: - UIViewController
     
     override func loadView() {
@@ -80,11 +59,7 @@ final class HighScoresView: UserInterface {
     }
     
     func setConstraints() {
-        
-//        titleLabel.autoPinEdge(toSuperviewEdge: .left, withInset: 20)
-//        titleLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 20)
-//        titleLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 20)
-//
+   
         highScoreTable.autoPinEdge(toSuperviewEdge: .top, withInset: 60)
         highScoreTable.autoPinEdge(toSuperviewEdge: .bottom, withInset: 20)
         highScoreTable.autoPinEdge(toSuperviewEdge: .left, withInset: 20)
@@ -118,17 +93,18 @@ extension HighScoresView: UITableViewDelegate {
             let tile = Tile(value: highestTileValue)
             let backgroundColor = highestTileValue != 0 ? tile.colour : .tile32
             let tileForegroundColor = highestTileValue != 0 ? tile.forecolour : .gameBackground
+            let textColour: UIColor = score.id == highlightedScoreId ? .tile64 : .gridBackground
             
             cell.scoreLabel.text = String(scoreValue)
-            cell.scoreLabel.textColor = .gridBackground
+            cell.scoreLabel.textColor = textColour
             cell.usernameLabel.text = userValue
-            cell.usernameLabel.textColor = .gridBackground
+            cell.usernameLabel.textColor = textColour
             cell.highestTileValueLabel.text = String(highestTileValue)
             cell.highestTileValueLabel.textColor = tileForegroundColor
             cell.highestTileValueLabel.backgroundColor = backgroundColor
             cell.rankLabel.text = String(indexPath.row + 1)
-            cell.rankLabel.textColor = .gridBackground
-            
+            cell.rankLabel.textColor = textColour
+    
         }
         
         return cell
@@ -153,8 +129,9 @@ extension HighScoresView: HighScoresViewApi {
         }
     }
     
-    func displayHighscores(scores: [Score]) {
+    func displayHighscores(scores: [Score], highlightedScoreId: String?) {
         self.scores = scores
+        self.highlightedScoreId = highlightedScoreId
         highScoreTable.reloadData()
     }
 }

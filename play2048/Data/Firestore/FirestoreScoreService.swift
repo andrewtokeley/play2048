@@ -27,9 +27,9 @@ extension FirestoreScoreService: ScoreServiceInterface {
         }
     }
     
-    func addScore(score: Score, completion: ((Error?) -> Void)?) {
+    func addScore(score: Score, completion: ((Score?, Error?) -> Void)?) {
         let _ = self.add(entity: score) { (score, error) in
-            completion?(error)
+            completion?(score, error)
         }
     }
     

@@ -11,7 +11,7 @@
 //MARK: - GameRouter API
 protocol GameRouterApi: RouterProtocol {
     
-    func showHighScoreModule()
+    func showHighScoreModule(data: HighScoresSetupData?)
     
 }
 
@@ -102,7 +102,7 @@ protocol GameInteractorApi: InteractorProtocol {
     func checkScore(scoreValue: Int, completion: ((Bool, Bool) -> Void)?)
     
     /// Save the current score. The completion closure will return the score and whether it is a high score.
-    func saveScore(score: Score, completion: (() -> Void)?)
+    func saveScore(score: Score, completion: ((Score?, Error?) -> Void)?)
 }
 
 //extension GameInteractorApi {

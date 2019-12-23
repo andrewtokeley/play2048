@@ -11,6 +11,14 @@ import Foundation
 // MARK: - HighScoresPresenter Class
 final class HighScoresPresenter: Presenter {
     
+    var setupData: HighScoresSetupData?
+    
+    override func setupView(data: Any) {
+        if let data = data as? HighScoresSetupData {
+            self.setupData = data
+        }
+    }
+    
     override func viewIsAboutToAppear() {
         
         //view.displayTitle(title: "High Scores")
@@ -26,15 +34,9 @@ extension HighScoresPresenter: HighScoresPresenterApi {
         router.dismiss(animated: true, completion: nil)
     }
     
-//    func didTapHeading() {
-//        interactor.deleteHighscores {
-//            self.interactor.fetchHighScores()
-//        }
-//    }
-    
     func didFetchHighScores(scores: [Score]) {
         view.displaySpinner(show: false)
-        view.displayHighscores(scores: scores)
+        view.displayHighscores(scores: scores, highlightedScoreId: self.setupData?.highlightedScoreId)
     }
 }
 

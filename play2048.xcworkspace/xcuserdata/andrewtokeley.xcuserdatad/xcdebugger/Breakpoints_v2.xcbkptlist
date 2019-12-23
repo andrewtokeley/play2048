@@ -94,8 +94,8 @@
             filePath = "play2048/Modules/Game/GameInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "moveTiles(direction:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -112,7 +112,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
             endingLineNumber = "35"
-            landmarkName = "newGame(tileSet:)"
+            landmarkName = "newGame(tileSet:showFirstTiles:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -126,10 +126,10 @@
             filePath = "play2048/Modules/Game/GameModuleApi.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "newGame(tileSet:)"
-            landmarkType = "7">
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -144,7 +144,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
             endingLineNumber = "47"
-            landmarkName = "newGame(tileSet:)"
+            landmarkName = "newGame(tileSet:showFirstTiles:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -158,8 +158,8 @@
             filePath = "play2048/Modules/Game/GameInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "moveTiles(direction:completion:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -16,7 +16,7 @@ protocol HighScoresViewApi: UserInterfaceProtocol {
     
     func displaySpinner(show: Bool)
     
-    func displayHighscores(scores: [Score])
+    func displayHighscores(scores: [Score], highlightedScoreId: String?)
     
 }
 

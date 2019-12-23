@@ -85,11 +85,11 @@ extension GameInteractor: GameInteractorApi {
     /**
      Save score to data store
      */
-    func saveScore(score: Score, completion: (() -> Void)?) {
+    func saveScore(score: Score, completion: ((Score?, Error?) -> Void)?) {
         
         let service = ServiceFactory.sharedInstance.scoreService
-        service.addScore(score: score) { (error) in
-            completion?()
+        service.addScore(score: score) { (score, error) in
+            completion?(score, error)
         }
     }
     
