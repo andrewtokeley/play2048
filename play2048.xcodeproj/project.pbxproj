@@ -68,6 +68,8 @@
 		D84DC18223B15CF200303D19 /* GameSetupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC18023B15CF200303D19 /* GameSetupData.swift */; };
 		D84DC18423B54AB500303D19 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC18323B54AB500303D19 /* UIButtonExtension.swift */; };
 		D84DC18523B54AB500303D19 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC18323B54AB500303D19 /* UIButtonExtension.swift */; };
+		D84DC18823B5515600303D19 /* launchimage_1125x2436.png in Resources */ = {isa = PBXBuildFile; fileRef = D84DC18723B5515500303D19 /* launchimage_1125x2436.png */; };
+		D84DC18923B5515600303D19 /* launchimage_1125x2436.png in Resources */ = {isa = PBXBuildFile; fileRef = D84DC18723B5515500303D19 /* launchimage_1125x2436.png */; };
 		D850CFAC23A1D5B90059F9C1 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850CFAB23A1D5B90059F9C1 /* DataError.swift */; };
 		D850CFAF23A1D93B0059F9C1 /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850CFAE23A1D93B0059F9C1 /* ServiceFactory.swift */; };
 		D853867F239EB70000E2BB1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D853867E239EB70000E2BB1F /* AppDelegate.swift */; };
@@ -180,6 +182,7 @@
 		D8450E2A23AEC90B00296676 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		D84DC18023B15CF200303D19 /* GameSetupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupData.swift; sourceTree = "<group>"; };
 		D84DC18323B54AB500303D19 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		D84DC18723B5515500303D19 /* launchimage_1125x2436.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchimage_1125x2436.png; sourceTree = "<group>"; };
 		D850CFAB23A1D5B90059F9C1 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		D850CFAE23A1D93B0059F9C1 /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		D853867B239EB70000E2BB1F /* play2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = play2048.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -327,6 +330,15 @@
 			path = Firestore;
 			sourceTree = "<group>";
 		};
+		D84DC18623B550D700303D19 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC18723B5515500303D19 /* launchimage_1125x2436.png */,
+				D8538684239EB70600E2BB1F /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		D8538672239EB70000E2BB1F = {
 			isa = PBXGroup;
 			children = (
@@ -352,11 +364,11 @@
 		D853867D239EB70000E2BB1F /* play2048 */ = {
 			isa = PBXGroup;
 			children = (
+				D84DC18623B550D700303D19 /* Assets */,
 				D85386A7239EBCDC00E2BB1F /* play2048-Bridging-Header.h */,
 				D81C4CEB23AAB0D70078F1D2 /* Info_Dev.plist */,
 				D853868C239EB70600E2BB1F /* Info.plist */,
 				D853867E239EB70000E2BB1F /* AppDelegate.swift */,
-				D8538684239EB70600E2BB1F /* Assets.xcassets */,
 				D8538689239EB70600E2BB1F /* LaunchScreen.storyboard */,
 				D85D9D1823B077FC000FC9E1 /* LaunchScreen-2048.storyboard */,
 				D8E71FF523A1CB14001DDDE9 /* Data */,
@@ -631,6 +643,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D840754723AA262E00121170 /* TileCollectionViewCell.xib in Resources */,
+				D84DC18923B5515600303D19 /* launchimage_1125x2436.png in Resources */,
 				D85D9D1A23B077FC000FC9E1 /* LaunchScreen-2048.storyboard in Resources */,
 				D840754823AA262E00121170 /* LaunchScreen.storyboard in Resources */,
 				D85D9D2323B1488B000FC9E1 /* Loader.storyboard in Resources */,
@@ -645,6 +658,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8E71FDD239ECB04001DDDE9 /* TileCollectionViewCell.xib in Resources */,
+				D84DC18823B5515600303D19 /* launchimage_1125x2436.png in Resources */,
 				D85D9D1923B077FC000FC9E1 /* LaunchScreen-2048.storyboard in Resources */,
 				D8FDCE9A23AB06FE006F4CE0 /* GoogleService-Info.plist in Resources */,
 				D85D9D2223B1488B000FC9E1 /* Loader.storyboard in Resources */,
