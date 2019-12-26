@@ -19,10 +19,11 @@ final class HighScoresView: UserInterface {
     
     // MARK: - Subviews
     
-    lazy var closeButton: UIButton = {
-        let view = UIButton()
+    lazy var closeButton: ButtonExtended = {
+        let view = ButtonExtended()
         view.setImage(UIImage(named: "close"), for: .normal)
         view.addTarget(self, action: #selector(didTapClose), for: .touchUpInside)
+        view.increaseHitAreaBy = 20
         return view
     }()
         
