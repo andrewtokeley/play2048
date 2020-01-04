@@ -79,6 +79,7 @@ final class GameView: UserInterface {
         view.register(UINib(nibName: "TileCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CELL_ID)
         
         view.contentInset = UIEdgeInsets(top: GRID_SPACING, left: GRID_SPACING, bottom: GRID_SPACING, right: GRID_SPACING)
+        
         view.delegate = self
         view.dataSource = self
         view.isUserInteractionEnabled = false
@@ -256,6 +257,7 @@ extension GameView: GameViewApi {
     }
     
     func displayTileSet(tileSet: TileSet) {
+        
         self.tileSet = tileSet
         grid.reloadData()
     }
@@ -327,10 +329,12 @@ private extension GameView {
 
 extension GameView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
+
         let sizeOfGrid = (0.9 * self.view.bounds.width)
-        let sizeOfCell = (sizeOfGrid - 5 * GRID_SPACING)/4
-        
+
+        let size = CGFloat(tileSet!.rows)
+        let sizeOfCell = (sizeOfGrid - (size + 1) * GRID_SPACING)/size
+
         // need to adjust so that rounding doesn't make the tiles a little too big and hence throw the layout... need a better way!
         return CGSize(width: 0.999*sizeOfCell, height: 0.999*sizeOfCell)
     }

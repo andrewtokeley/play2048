@@ -133,7 +133,7 @@ final class GameOverView: UserInterface {
         nameTextField.autoPinEdge(toSuperviewEdge: .left, withInset: 20)
         nameTextField.autoPinEdge(toSuperviewEdge: .right, withInset: 20)
         nameTextField.autoAlignAxis(toSuperviewAxis: .vertical)
-        nameAreaHeightConstraint = nameTextField.autoSetDimension(.height, toSize: 40)
+        nameAreaHeightConstraint = nameTextField.autoSetDimension(.height, toSize: 50)
         
         playAgainButton.autoSetDimension(.width, toSize: 150)
         playAgainButton.autoSetDimension(.height, toSize: 50)

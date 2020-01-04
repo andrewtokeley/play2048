@@ -13,7 +13,10 @@ import Foundation
 final class GamePresenter: Presenter {
     
     var isPlayingGame: Bool = false
-    let WIN_GOAL = 8
+    let WIN_GOAL = 2048
+    
+    // changing these values will flow through to the view also.
+    // NOTE: currently the numbers must be the same (TileSet and View don't deal with this yet)
     let COLUMNS: Int = 4
     let ROWS: Int = 4
     
@@ -21,7 +24,7 @@ final class GamePresenter: Presenter {
         if let data = data as? GameSetupData {
             view.displayHighScore(scoreValue: data.highScore)
             view.displayScore(scoreValue: 0)
-            view.displayTileSet(tileSet: TileSet(rows: 4, columns: 4))
+            view.displayTileSet(tileSet: TileSet(rows: ROWS, columns: COLUMNS))
             view.showNewGameOverlay(show: true)
         }
     }
