@@ -13,7 +13,7 @@ import Foundation
 final class GamePresenter: Presenter {
     
     var isPlayingGame: Bool = false
-    let WIN_GOAL = 2048
+    let WIN_GOAL = 8
     let COLUMNS: Int = 4
     let ROWS: Int = 4
     
@@ -30,62 +30,19 @@ final class GamePresenter: Presenter {
         view.displaySpinner(show: false)
     }
     
-    func endOfGameTitleAndMessage(won: Bool, isTopTen: Bool, isHighScore: Bool) -> (title: String, message: String) {
-        
-        let title = won ? "You Won!" : "Game Over!"
-        var message =
-            won && isHighScore ? "Nice work, you reached \(String(self.WIN_GOAL)) AND got a new highscore. Wahoo!" :
-                (won && isTopTen ? "Nice work, you reached \(String(self.WIN_GOAL)) AND got a top ten score" :
-                    (won && !isTopTen ? "Nice work, you reached \(String(self.WIN_GOAL))! No highscore this time, sorry!" :
-                        (!won && isHighScore ? "YUS, new highscore!" :
-                            (!won && isTopTen ? "NOOICE, top 10 score!" : ""))))
-        
-        if isTopTen {
-          message += "\n\nEnter your initals (up to 5 characters)"
+}
+
+// MARK: Game Over Delegate
+extension GamePresenter: GameOverDelegate {
+    
+    func gameOver(didSelectOption option: GameOverOption) {
+        if option == .playAgain {
+            self.didSelectNewGame()
+        } else if option == .close {
+            self.didSelectQuitGame()
         }
-        return (title: title, message: message)
     }
     
-    func processEndOfGame(scoreValue: Int, highestTileValue: Int, won: Bool) {
-        
-        self.isPlayingGame = false
-        view.showNewGameOverlay(show: true)
-        
-        // check whether there's a new highscore
-        self.interactor.checkScore(scoreValue: scoreValue) { (isTopTen, isHighScore) in
-        
-            if isHighScore {
-                self.view.displayHighScore(scoreValue: scoreValue)
-            }
- 
-            let titleAndMessage = self.endOfGameTitleAndMessage(won: won, isTopTen: isTopTen, isHighScore: isHighScore)
-            let title = titleAndMessage.title
-            let message = titleAndMessage.message
-
-            if isTopTen {
-                
-                // need to get user's name
-                self.view.displayMessageAndGetString(title: title, message: message) { (name) in
-                    
-                    // save the score
-                    self.view.displaySpinner(show: true)
-                    let score = Score(userName: name, dateTime: Date(), score: scoreValue, highestTileValue: highestTileValue)
-                    self.interactor.saveScore(score: score) { (addedScore, error) in
-                    
-                        self.view.displaySpinner(show: false)
-                        // show the high score module, highlighting the current score
-                        let data = HighScoresSetupData(highlightedScoreId: addedScore?.id)
-                        self.router.showHighScoreModule(data: data)
-                    }
-                }
-            } else {
-                self.view.displayMessage(title: title, message: message) {
-                    // nothing left to do, this is just an info message
-                }
-            }
-
-        }
-    }
 }
 
 // MARK: - GamePresenter API
@@ -100,7 +57,7 @@ extension GamePresenter: GamePresenterApi {
     }
     
     func didSelectQuitGame() {
-        
+        view.showNewGameOverlay(show: true)
     }
     
     func didUpdateTileSet(tileSet: TileSet) {
@@ -118,7 +75,11 @@ extension GamePresenter: GamePresenterApi {
                 let won =  highestTileValue == self.WIN_GOAL
                 
                 if !availableMoves || won {
-                    self.processEndOfGame(scoreValue: scoreValue, highestTileValue:highestTileValue, won: won)
+                    
+                    self.isPlayingGame = false
+                    
+                    // Display game over dialog
+                    self.router.showGameOverDialog(data: GameOverSetupData(delegate: self, scoreValue: scoreValue, highestTileValue: highestTileValue, hasWon: won))
                 }
             }
         }

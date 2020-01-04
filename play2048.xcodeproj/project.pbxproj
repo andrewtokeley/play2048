@@ -70,6 +70,22 @@
 		D84DC18523B54AB500303D19 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC18323B54AB500303D19 /* UIButtonExtension.swift */; };
 		D84DC18823B5515600303D19 /* launchimage_1125x2436.png in Resources */ = {isa = PBXBuildFile; fileRef = D84DC18723B5515500303D19 /* launchimage_1125x2436.png */; };
 		D84DC18923B5515600303D19 /* launchimage_1125x2436.png in Resources */ = {isa = PBXBuildFile; fileRef = D84DC18723B5515500303D19 /* launchimage_1125x2436.png */; };
+		D84DC1DC23BADDDF00303D19 /* GameOverDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1D623BADDDF00303D19 /* GameOverDisplayData.swift */; };
+		D84DC1DD23BADDE000303D19 /* GameOverDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1D623BADDDF00303D19 /* GameOverDisplayData.swift */; };
+		D84DC1DE23BADDE000303D19 /* GameOverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1D723BADDDF00303D19 /* GameOverPresenter.swift */; };
+		D84DC1DF23BADDE000303D19 /* GameOverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1D723BADDDF00303D19 /* GameOverPresenter.swift */; };
+		D84DC1E023BADDE000303D19 /* GameOverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1D823BADDDF00303D19 /* GameOverRouter.swift */; };
+		D84DC1E123BADDE000303D19 /* GameOverRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1D823BADDDF00303D19 /* GameOverRouter.swift */; };
+		D84DC1E223BADDE000303D19 /* GameOverModuleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1D923BADDDF00303D19 /* GameOverModuleApi.swift */; };
+		D84DC1E323BADDE000303D19 /* GameOverModuleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1D923BADDDF00303D19 /* GameOverModuleApi.swift */; };
+		D84DC1E423BADDE000303D19 /* GameOverInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1DA23BADDDF00303D19 /* GameOverInteractor.swift */; };
+		D84DC1E523BADDE000303D19 /* GameOverInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1DA23BADDDF00303D19 /* GameOverInteractor.swift */; };
+		D84DC1E623BADDE000303D19 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1DB23BADDDF00303D19 /* GameOverView.swift */; };
+		D84DC1E723BADDE000303D19 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1DB23BADDDF00303D19 /* GameOverView.swift */; };
+		D84DC1E923BAE5CC00303D19 /* GameOverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1E823BAE5CC00303D19 /* GameOverDelegate.swift */; };
+		D84DC1EA23BAE5CC00303D19 /* GameOverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1E823BAE5CC00303D19 /* GameOverDelegate.swift */; };
+		D84DC1EC23BAE6CE00303D19 /* GameOverSetupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1EB23BAE6CE00303D19 /* GameOverSetupData.swift */; };
+		D84DC1ED23BAE6CE00303D19 /* GameOverSetupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84DC1EB23BAE6CE00303D19 /* GameOverSetupData.swift */; };
 		D850CFAC23A1D5B90059F9C1 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850CFAB23A1D5B90059F9C1 /* DataError.swift */; };
 		D850CFAF23A1D93B0059F9C1 /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850CFAE23A1D93B0059F9C1 /* ServiceFactory.swift */; };
 		D853867F239EB70000E2BB1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D853867E239EB70000E2BB1F /* AppDelegate.swift */; };
@@ -183,6 +199,14 @@
 		D84DC18023B15CF200303D19 /* GameSetupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupData.swift; sourceTree = "<group>"; };
 		D84DC18323B54AB500303D19 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		D84DC18723B5515500303D19 /* launchimage_1125x2436.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchimage_1125x2436.png; sourceTree = "<group>"; };
+		D84DC1D623BADDDF00303D19 /* GameOverDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverDisplayData.swift; sourceTree = "<group>"; };
+		D84DC1D723BADDDF00303D19 /* GameOverPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPresenter.swift; sourceTree = "<group>"; };
+		D84DC1D823BADDDF00303D19 /* GameOverRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverRouter.swift; sourceTree = "<group>"; };
+		D84DC1D923BADDDF00303D19 /* GameOverModuleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverModuleApi.swift; sourceTree = "<group>"; };
+		D84DC1DA23BADDDF00303D19 /* GameOverInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverInteractor.swift; sourceTree = "<group>"; };
+		D84DC1DB23BADDDF00303D19 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
+		D84DC1E823BAE5CC00303D19 /* GameOverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverDelegate.swift; sourceTree = "<group>"; };
+		D84DC1EB23BAE6CE00303D19 /* GameOverSetupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverSetupData.swift; sourceTree = "<group>"; };
 		D850CFAB23A1D5B90059F9C1 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		D850CFAE23A1D93B0059F9C1 /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		D853867B239EB70000E2BB1F /* play2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = play2048.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,6 +363,21 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		D84DC1D523BADDB900303D19 /* GameOver */ = {
+			isa = PBXGroup;
+			children = (
+				D84DC1D623BADDDF00303D19 /* GameOverDisplayData.swift */,
+				D84DC1D723BADDDF00303D19 /* GameOverPresenter.swift */,
+				D84DC1D823BADDDF00303D19 /* GameOverRouter.swift */,
+				D84DC1D923BADDDF00303D19 /* GameOverModuleApi.swift */,
+				D84DC1DA23BADDDF00303D19 /* GameOverInteractor.swift */,
+				D84DC1DB23BADDDF00303D19 /* GameOverView.swift */,
+				D84DC1E823BAE5CC00303D19 /* GameOverDelegate.swift */,
+				D84DC1EB23BAE6CE00303D19 /* GameOverSetupData.swift */,
+			);
+			path = GameOver;
+			sourceTree = "<group>";
+		};
 		D8538672239EB70000E2BB1F = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +431,7 @@
 		D85386A0239EBA9F00E2BB1F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D84DC1D523BADDB900303D19 /* GameOver */,
 				D85D9D3023B14895000FC9E1 /* Loader */,
 				D858129523A417C1007809C1 /* HighScores */,
 				D85386E4239EC38F00E2BB1F /* Game */,
@@ -803,7 +843,9 @@
 				D840751E23AA262E00121170 /* GameRouter.swift in Sources */,
 				D840751F23AA262E00121170 /* Router.swift in Sources */,
 				D840752023AA262E00121170 /* GamePresenter.swift in Sources */,
+				D84DC1DD23BADDE000303D19 /* GameOverDisplayData.swift in Sources */,
 				D840752123AA262E00121170 /* AppDelegate.swift in Sources */,
+				D84DC1EA23BAE5CC00303D19 /* GameOverDelegate.swift in Sources */,
 				D840752223AA262E00121170 /* UIColorExtension.swift in Sources */,
 				D840752323AA262E00121170 /* ViperComponent.swift in Sources */,
 				D840752423AA262E00121170 /* ViperitModule.swift in Sources */,
@@ -818,7 +860,9 @@
 				D840752B23AA262E00121170 /* Board.swift in Sources */,
 				D840752C23AA262E00121170 /* DataError.swift in Sources */,
 				D840752D23AA262E00121170 /* Interactor.swift in Sources */,
+				D84DC1DF23BADDE000303D19 /* GameOverPresenter.swift in Sources */,
 				D840752E23AA262E00121170 /* HighScoresModuleApi.swift in Sources */,
+				D84DC1E523BADDE000303D19 /* GameOverInteractor.swift in Sources */,
 				D840752F23AA262E00121170 /* UserInterface+Collection.swift in Sources */,
 				D840753023AA262E00121170 /* HighScoresRouter.swift in Sources */,
 				D840753123AA262E00121170 /* Game.swift in Sources */,
@@ -832,11 +876,15 @@
 				D840753823AA262E00121170 /* TileResult.swift in Sources */,
 				D840753923AA262E00121170 /* HighScoresDisplayData.swift in Sources */,
 				D85D9D2D23B1488B000FC9E1 /* LoaderInteractor.swift in Sources */,
+				D84DC1E723BADDE000303D19 /* GameOverView.swift in Sources */,
 				D840753A23AA262E00121170 /* ViperitError.swift in Sources */,
+				D84DC1E323BADDE000303D19 /* GameOverModuleApi.swift in Sources */,
 				D840753B23AA262E00121170 /* HighScoresInteractor.swift in Sources */,
 				D840753C23AA262E00121170 /* Tile.swift in Sources */,
 				D840753D23AA262E00121170 /* HighScoresPresenter.swift in Sources */,
 				D840753E23AA262E00121170 /* FirestoreEntityService.swift in Sources */,
+				D84DC1E123BADDE000303D19 /* GameOverRouter.swift in Sources */,
+				D84DC1ED23BAE6CE00303D19 /* GameOverSetupData.swift in Sources */,
 				D8FDCE9723AAF7BA006F4CE0 /* FirestoreScore.swift in Sources */,
 				D840753F23AA262E00121170 /* GameView.swift in Sources */,
 				D85D9D2923B1488B000FC9E1 /* LoaderRouter.swift in Sources */,
@@ -869,7 +917,9 @@
 				D85386E0239EC38800E2BB1F /* GameRouter.swift in Sources */,
 				D85386C1239EBF1A00E2BB1F /* Router.swift in Sources */,
 				D85386DF239EC38800E2BB1F /* GamePresenter.swift in Sources */,
+				D84DC1DC23BADDDF00303D19 /* GameOverDisplayData.swift in Sources */,
 				D853867F239EB70000E2BB1F /* AppDelegate.swift in Sources */,
+				D84DC1E923BAE5CC00303D19 /* GameOverDelegate.swift in Sources */,
 				D8E71FF2239F3446001DDDE9 /* UIColorExtension.swift in Sources */,
 				D85386C2239EBF1A00E2BB1F /* ViperComponent.swift in Sources */,
 				D85386C4239EBF1A00E2BB1F /* ViperitModule.swift in Sources */,
@@ -884,7 +934,9 @@
 				D8E71FEA239F1FFB001DDDE9 /* Board.swift in Sources */,
 				D8D3532023AAC28100E4B7B8 /* FirestoreScore.swift in Sources */,
 				D850CFAC23A1D5B90059F9C1 /* DataError.swift in Sources */,
+				D84DC1DE23BADDE000303D19 /* GameOverPresenter.swift in Sources */,
 				D85386C0239EBF1A00E2BB1F /* Interactor.swift in Sources */,
+				D84DC1E423BADDE000303D19 /* GameOverInteractor.swift in Sources */,
 				D85812A123A417D6007809C1 /* HighScoresModuleApi.swift in Sources */,
 				D85386CD239EBFAA00E2BB1F /* UserInterface+Collection.swift in Sources */,
 				D85812A023A417D6007809C1 /* HighScoresRouter.swift in Sources */,
@@ -898,11 +950,15 @@
 				D8D3531E23AAC17F00E4B7B8 /* FirestoreEntity.swift in Sources */,
 				D8E71FE8239F1FFB001DDDE9 /* TileResult.swift in Sources */,
 				D85D9D2C23B1488B000FC9E1 /* LoaderInteractor.swift in Sources */,
+				D84DC1E623BADDE000303D19 /* GameOverView.swift in Sources */,
 				D858129E23A417D6007809C1 /* HighScoresDisplayData.swift in Sources */,
+				D84DC1E223BADDE000303D19 /* GameOverModuleApi.swift in Sources */,
 				D85386C3239EBF1A00E2BB1F /* ViperitError.swift in Sources */,
 				D85812A223A417D6007809C1 /* HighScoresInteractor.swift in Sources */,
 				D8E71FEB239F1FFB001DDDE9 /* Tile.swift in Sources */,
 				D858129F23A417D6007809C1 /* HighScoresPresenter.swift in Sources */,
+				D84DC1E023BADDE000303D19 /* GameOverRouter.swift in Sources */,
+				D84DC1EC23BAE6CE00303D19 /* GameOverSetupData.swift in Sources */,
 				D840750B23AA18A600121170 /* FirestoreEntityService.swift in Sources */,
 				D85386E3239EC38800E2BB1F /* GameView.swift in Sources */,
 				D85D9D2823B1488B000FC9E1 /* LoaderRouter.swift in Sources */,

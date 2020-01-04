@@ -14,6 +14,7 @@ enum AppModules: String, ViperitModule {
     case game
     case highScores
     case loader
+    case gameOver
     
     var viewType: ViperitViewType {
         if self == .loader {

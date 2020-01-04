@@ -11,8 +11,11 @@
 //MARK: - GameRouter API
 protocol GameRouterApi: RouterProtocol {
     
+    /// Display a list of high scores
     func showHighScoreModule(data: HighScoresSetupData?)
     
+    /// Show the Game Over dialog
+    func showGameOverDialog(data: GameOverSetupData)
 }
 
 //MARK: - GameView API
@@ -92,17 +95,17 @@ protocol GameInteractorApi: InteractorProtocol {
     
     func getHighScores(completion: (([Score], Error?) -> Void)?)
     
-    /**
-     Checks the current score for high score status.
-     
-     The closure returns two parameters;
-     - (Bool) flag indicating whether score is in the top 10
-     - (Bool) flag indicating whether score is a new highscore
-     */
-    func checkScore(scoreValue: Int, completion: ((Bool, Bool) -> Void)?)
-    
-    /// Save the current score. The completion closure will return the score and whether it is a high score.
-    func saveScore(score: Score, completion: ((Score?, Error?) -> Void)?)
+//    /**
+//     Checks the current score for high score status.
+//     
+//     The closure returns two parameters;
+//     - (Bool) flag indicating whether score is in the top 10
+//     - (Bool) flag indicating whether score is a new highscore
+//     */
+//    func checkScore(scoreValue: Int, completion: ((Bool, Bool) -> Void)?)
+//    
+//    /// Save the current score. The completion closure will return the score and whether it is a high score.
+//    func saveScore(score: Score, completion: ((Score?, Error?) -> Void)?)
 }
 
 //extension GameInteractorApi {

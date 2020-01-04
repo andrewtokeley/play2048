@@ -542,9 +542,9 @@
             filePath = "play2048/Modules/Game/GamePresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "didSwipe(direction:)"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "gameOver(didSelectOption:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

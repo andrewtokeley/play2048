@@ -20,6 +20,12 @@ extension GameRouter: GameRouterApi {
         let module = AppModules.highScores.build()
         module.router.show(from: viewController, embedInNavController: false, setupData: data)
     }
+    
+    func showGameOverDialog(data: GameOverSetupData) {
+        let module = AppModules.gameOver.build()
+        module.view.viewController.modalPresentationStyle = .overFullScreen
+        module.router.show(from: viewController, embedInNavController: false, setupData: data)
+    }
 }
 
 // MARK: - Game Viper Components

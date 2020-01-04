@@ -82,38 +82,38 @@ extension GameInteractor: GameInteractorApi {
         }
     }
         
-    /**
-     Save score to data store
-     */
-    func saveScore(score: Score, completion: ((Score?, Error?) -> Void)?) {
-        
-        let service = ServiceFactory.sharedInstance.scoreService
-        service.addScore(score: score) { (score, error) in
-            completion?(score, error)
-        }
-    }
+//    /**
+//     Save score to data store
+//     */
+//    func saveScore(score: Score, completion: ((Score?, Error?) -> Void)?) {
+//        
+//        let service = ServiceFactory.sharedInstance.scoreService
+//        service.addScore(score: score) { (score, error) in
+//            completion?(score, error)
+//        }
+//    }
     
-    /**
-    Checks the current score for high score status.
-    
-    The closure returns two parameters;
-    - (Bool) flag indicating whether score is in the top 10
-    - (Bool) flag indicating whether score is a new highscore
-    */
-    func checkScore(scoreValue: Int, completion: ((Bool, Bool) -> Void)?) {
-        
-        var isHighScore = false
-        var isTopTen = false
-        
-        // get the highscores
-        let service = ServiceFactory.sharedInstance.scoreService
-        service.highScores { (scores, error) in
-            isTopTen = scoreValue > (scores.last?.score ?? 0)
-            isHighScore = scoreValue > (scores.first?.score ?? 0)
-            
-            completion?(isTopTen, isHighScore)
-        }
-    }
+//    /**
+//    Checks the current score for high score status.
+//
+//    The closure returns two parameters;
+//    - (Bool) flag indicating whether score is in the top 10
+//    - (Bool) flag indicating whether score is a new highscore
+//    */
+//    func checkScore(scoreValue: Int, completion: ((Bool, Bool) -> Void)?) {
+//
+//        var isHighScore = false
+//        var isTopTen = false
+//
+//        // get the highscores
+//        let service = ServiceFactory.sharedInstance.scoreService
+//        service.highScores { (scores, error) in
+//            isTopTen = scoreValue > (scores.last?.score ?? 0)
+//            isHighScore = scoreValue > (scores.first?.score ?? 0)
+//
+//            completion?(isTopTen, isHighScore)
+//        }
+//    }
     
     /**
     Moves the tiles in the given direction and returns information about the score and tileSet state.

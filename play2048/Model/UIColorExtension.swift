@@ -11,6 +11,15 @@ import UIKit
 
 extension UIColor {
 
+    
+    public class var textFieldBackground: UIColor {
+        return UIColor(red: 153/255, green: 153/255, blue: 153/255, alpha: 1)
+    }
+    
+    public class var textFieldBorder: UIColor {
+        return .black
+    }
+    
     public class var tile2: UIColor {
         return UIColor(red: 249/255, green: 203/255, blue: 150/255, alpha: 1)
     }
