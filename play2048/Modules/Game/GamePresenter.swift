@@ -46,6 +46,10 @@ extension GamePresenter: GameOverDelegate {
         }
     }
     
+    func didSaveHighScore(scoreId: String) {
+        view.showNewGameOverlay(show: true)
+        router.showHighScoreModule(data: HighScoresSetupData(highlightedScoreId: scoreId))
+    }
 }
 
 // MARK: - GamePresenter API

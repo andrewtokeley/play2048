@@ -60,9 +60,16 @@ extension GameOverPresenter: GameOverPresenterApi {
                 interactor.saveScore(score: score) { (score, error) in
                     self.view.viewController.removeSpinner(spinnerView: spinnerContainer)
                     
-                    self.view.displayMessage(message: "Do you want to play again?")
-                    self.view.displayNextStepOptions(true)
-                    self.view.displayHighScoreNameEntry(false)
+                    if let id = score?.id, let delegate = self.delegate {
+                        self.router.dismiss(animated: false) {
+                            delegate.didSaveHighScore(scoreId: id)
+                        }                        
+                    } else {
+                        // this would only happen if the score couldn't be saved - shouldn't ever happen
+                        self.view.displayMessage(message: "Do you want to play again?")
+                        self.view.displayNextStepOptions(true)
+                        self.view.displayHighScoreNameEntry(false)
+                    }
                 }
             }
         }
@@ -77,6 +84,7 @@ extension GameOverPresenter: GameOverPresenterApi {
         delegate?.gameOver(didSelectOption: .close)
         router.dismiss(animated: true, completion: nil)
     }
+    
 }
 
 // MARK: - GameOver Viper Components

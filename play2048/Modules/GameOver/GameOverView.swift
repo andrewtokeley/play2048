@@ -115,6 +115,14 @@ final class GameOverView: UserInterface {
         view.addSubview(saveScoreButton)
         
         setConstraints()
+        
+        registerTapToDismissKeyboard()
+    }
+    
+    private func registerTapToDismissKeyboard() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     private func setConstraints() {
