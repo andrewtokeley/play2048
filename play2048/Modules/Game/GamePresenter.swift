@@ -24,19 +24,22 @@ final class GamePresenter: Presenter {
         if let data = data as? GameSetupData {
             view.displayHighScore(scoreValue: data.highScore)
             view.displayScore(scoreValue: 0)
-            view.displayTileSet(tileSet: TileSet(rows: ROWS, columns: COLUMNS))
+            //view.displayTileSet(tileSet: TileSet(rows: ROWS, columns: COLUMNS))
             view.showNewGameOverlay(show: true)
+            
+            // initialise a new game, but don't show the first two tiles yet.
+            interactor.newGame(tileSet: TileSet(rows: ROWS, columns: COLUMNS), showFirstTiles: false)
         }
-    }
-    
-    func gameInitialised() {
-        view.displaySpinner(show: false)
     }
     
 }
 
 // MARK: Game Over Delegate
 extension GamePresenter: GameOverDelegate {
+    
+    func isNewHighScore(scoreValue: Int) {
+        view.displayHighScore(scoreValue: scoreValue)
+    }
     
     func gameOver(didSelectOption option: GameOverOption) {
         if option == .playAgain {
@@ -55,12 +58,17 @@ extension GamePresenter: GameOverDelegate {
 // MARK: - GamePresenter API
 extension GamePresenter: GamePresenterApi {
         
+    func gameInitialised() {
+        view.displaySpinner(show: false)
+    }
+    
     func didSelectNewGame() {
         
         view.displaySpinner(show: true)
         view.showNewGameOverlay(show: false)
         isPlayingGame = true
         interactor.newGame(tileSet: TileSet(rows: ROWS, columns: COLUMNS), showFirstTiles: true)
+        
     }
     
     func didSelectQuitGame() {
@@ -68,25 +76,41 @@ extension GamePresenter: GamePresenterApi {
     }
     
     func didUpdateTileSet(tileSet: TileSet) {
-        view.displayTileSet(tileSet: tileSet)
+        //view.displayTileSet(tileSet: tileSet)
     }
     
     func didSwipe(direction: Direction) {
         
         if isPlayingGame {
-            interactor.moveTiles(direction: direction) { (availableMoves, highestTileValue, scoreValue) in
+            
+            interactor.moveTiles(direction: direction) { (didMove, scoreValue, highestTileValue) in
                 
                 // display the updated score
                 self.view.displayScore(scoreValue: scoreValue)
                 
-                let won =  highestTileValue == self.WIN_GOAL
-                
-                if !availableMoves || won {
-                    
+                // WIN!
+                if highestTileValue == self.WIN_GOAL {
                     self.isPlayingGame = false
                     
                     // Display game over dialog
-                    self.router.showGameOverDialog(data: GameOverSetupData(delegate: self, scoreValue: scoreValue, highestTileValue: highestTileValue, hasWon: won))
+                    self.router.showGameOverDialog(data: GameOverSetupData(delegate: self, scoreValue: scoreValue, highestTileValue: highestTileValue, hasWon: true))
+                } else {
+                    
+                    // add a new tile to random space. Wait the duration of the move animation iteration.
+                    if didMove {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(0.3)) {
+                            self.interactor.addNewTile { (availableMoves) in
+                                if !availableMoves {
+                                    
+                                    // Game Over!
+                                    self.isPlayingGame = false
+                                    
+                                    // Display game over dialog
+                                    self.router.showGameOverDialog(data: GameOverSetupData(delegate: self, scoreValue: scoreValue, highestTileValue: highestTileValue, hasWon: false))
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -102,6 +126,26 @@ extension GamePresenter: GamePresenterApi {
     
     func didSelectHighScores() {
         router.showHighScoreModule(data: nil)
+    }
+    
+    func didMoveTile(from: GridReference, inDirection direction: Direction) {
+        view.moveTile(from: from, inDirection: direction)
+    }
+    
+    func didRemoveTile(from: GridReference) {
+        view.removeTile(from: from)
+    }
+    
+    func didChangeTileValue(newValue: Int, reference: GridReference) {
+        view.changeTileValue(newValue: newValue, reference: reference)
+    }
+    
+    func didAddTile(tile: Tile, reference: GridReference) {
+        view.addTile(tile: tile, reference: reference)
+    }
+    
+    func didRemoveAllTiles() {
+        view.removeAllTiles()
     }
 }
 

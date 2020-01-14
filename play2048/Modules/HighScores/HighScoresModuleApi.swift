@@ -25,7 +25,7 @@ protocol HighScoresPresenterApi: PresenterProtocol {
     
     func didFetchHighScores(scores: [Score])
     
-    //func didTapHeading()
+    func didSelectDelete(completion: (() -> Void)?)
     
     func didSelectClose()
 }

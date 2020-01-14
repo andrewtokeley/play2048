@@ -22,8 +22,8 @@ enum Direction {
     
     var delta: DirectionDelta {
         switch self {
-        case .up: return DirectionDelta(rowDelta: -1, columnDelta: 0)
-        case .down: return DirectionDelta(rowDelta: 1, columnDelta: 0)
+        case .up: return DirectionDelta(rowDelta: 1, columnDelta: 0)
+        case .down: return DirectionDelta(rowDelta: -1, columnDelta: 0)
         case .left: return DirectionDelta(rowDelta: 0, columnDelta: -1)
         case .right: return DirectionDelta(rowDelta: 0, columnDelta: 1)
         }

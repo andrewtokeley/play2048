@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 // MARK: - LoaderInteractor Class
 final class LoaderInteractor: Interactor {
@@ -15,6 +16,13 @@ final class LoaderInteractor: Interactor {
 // MARK: - LoaderInteractor API
 extension LoaderInteractor: LoaderInteractorApi {
     
+    func authenticateUser(completion: (() -> Void)?) {
+        
+        // To get access to the Scores table we need the user to be authenticated. Rather than registering users, we're just going to use anon auth.
+        Auth.auth().signInAnonymously { (result, error) in
+            completion?()
+        }
+    }
     func getHighScores(completion: (([Score], Error?) -> Void)?) {
     
         let service = ServiceFactory.sharedInstance.scoreService

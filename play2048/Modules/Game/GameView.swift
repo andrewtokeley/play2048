@@ -7,18 +7,36 @@
 //
 
 import UIKit
-//import Viperit
+import SpriteKit
 
 //MARK: GameView Class
 final class GameView: UserInterface {
     
     var spinnerView: UIView?
-    
     private let CELL_ID = "tile"
     private var tileSet: TileSet?
     private let GRID_SPACING: CGFloat = 5
     
+    var gridScene: GridScene? {
+        return gridView.scene as? GridScene
+    }
+    
     //MARK: - Subviews
+    
+    lazy var gridView: SKView = {
+        //print("loaded gridView")
+        let view = SKView()
+        view.allowsTransparency = true
+        view.ignoresSiblingOrder = true
+        
+        #if DEBUG
+            view.showsFPS = true
+            view.showsNodeCount = true
+        #endif
+        
+        return view
+    }()
+    
     lazy var newGameOverlay: UIView = {
         let view = UIView()
         view.backgroundColor = .black
@@ -68,23 +86,6 @@ final class GameView: UserInterface {
         
         return label
     }()
-    
-    lazy var grid: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        
-        let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        view.backgroundColor = .gridBackground
-        view.register(UINib(nibName: "TileCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CELL_ID)
-        
-        view.contentInset = UIEdgeInsets(top: GRID_SPACING, left: GRID_SPACING, bottom: GRID_SPACING, right: GRID_SPACING)
-        
-        view.delegate = self
-        view.dataSource = self
-        view.isUserInteractionEnabled = false
-        return view
-    }()
 
     // MARK: - Swipes
     
@@ -105,7 +106,7 @@ final class GameView: UserInterface {
     }
     
     @objc func swipe(sender: UISwipeGestureRecognizer) {
-        print(sender.direction)
+        //print(sender.direction)
         if sender.direction == .left {
             presenter.didSwipe(direction: .left)
         }
@@ -159,12 +160,32 @@ final class GameView: UserInterface {
         }
     }
     
-    // MARK: - Load View
+    // MARK: - UIViewController overrides
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // at this point the gridView will have been auto sized and the presented scene will have access to its bounds.
+        if gridView.scene == nil {
+            let scene = GridScene(dimension: 4, duration: 0.2, size: gridView.frame.size)
+            gridView.presentScene(scene)
+        }
+        //gridView.layer.cornerRadius = 15
+        newGameOverlay.layer.cornerRadius = gridView.layer.cornerRadius
+        
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func loadView() {
         super.loadView()
         
         self.view.backgroundColor = .gameBackground
-        self.view.addSubview(grid)
+        
+        self.view.addSubview(gridView)
         self.view.addSubview(scoreLabel)
         self.view.addSubview(scoreTitleLabel)
         self.view.addSubview(highScoreLabel)
@@ -190,10 +211,10 @@ final class GameView: UserInterface {
         highScoreTitleLabel.autoPinEdge(.top, to: .bottom, of: highScoreLabel, withOffset: 5)
         highScoreTitleLabel.autoPinEdge(toSuperviewEdge: .right, withInset: 20)
         
-        grid.autoSetDimension(.width, toSize: 0.9 * self.view.bounds.width)
-        grid.autoSetDimension(.height, toSize: 0.9 * self.view.bounds.width)
-        grid.autoPinEdge(.top, to: .bottom, of: highScoreTitleLabel, withOffset: 20)
-        grid.autoPinEdge(toSuperviewEdge: .left, withInset: 20)
+        gridView.autoSetDimension(.width, toSize: 0.9 * self.view.bounds.width)
+        gridView.autoSetDimension(.height, toSize: 0.9 * self.view.bounds.width)
+        gridView.autoPinEdge(.top, to: .bottom, of: highScoreTitleLabel, withOffset: 20)
+        gridView.autoPinEdge(toSuperviewEdge: .left, withInset: 20)
         
         newGameOverlay.autoSetDimension(.width, toSize: 0.9 * self.view.bounds.width)
         newGameOverlay.autoSetDimension(.height, toSize: 0.9 * self.view.bounds.width)
@@ -257,9 +278,20 @@ extension GameView: GameViewApi {
     }
     
     func displayTileSet(tileSet: TileSet) {
-        
         self.tileSet = tileSet
-        grid.reloadData()
+        
+        for r in 1...self.tileSet!.rows {
+            for c in 1...self.tileSet!.columns {
+
+                let reference = GridReference(row: r, column: c)
+                if let tile = self.tileSet!.get(reference).tile {
+                    self.gridScene?.addTile(tile: tile, reference: reference)
+                } else {
+                    self.gridScene?.removeTile(from: reference)
+                }
+            }
+        }
+
     }
     
     func displayHighScore(scoreValue: Int) {
@@ -313,6 +345,26 @@ extension GameView: GameViewApi {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func moveTile(from: GridReference, inDirection direction: Direction) {
+        
+        gridScene?.moveTile(from: from, inDirection: direction)
+    }
+    func removeTile(from: GridReference) {
+        gridScene?.removeTile(from: from)
+    }
+    
+    func changeTileValue(newValue: Int, reference: GridReference) {
+        gridScene?.changeTileValue(newValue: newValue, at: reference)
+    }
+    
+    func addTile(tile: Tile, reference: GridReference) {
+        gridScene?.addTile(tile: tile, reference: reference)
+    }
+    
+    func removeAllTiles() {
+        gridScene?.removeAllTiles()
+    }
+    
 }
 
 // MARK: - GameView Viper Components API
@@ -323,58 +375,4 @@ private extension GameView {
     var displayData: GameDisplayData {
         return _displayData as! GameDisplayData
     }
-}
-
-// MARK: - UICollectionView Delegate
-
-extension GameView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        let sizeOfGrid = (0.9 * self.view.bounds.width)
-
-        let size = CGFloat(tileSet!.rows)
-        let sizeOfCell = (sizeOfGrid - (size + 1) * GRID_SPACING)/size
-
-        // need to adjust so that rounding doesn't make the tiles a little too big and hence throw the layout... need a better way!
-        return CGSize(width: 0.999*sizeOfCell, height: 0.999*sizeOfCell)
-    }
-}
-
-extension GameView: UICollectionViewDelegate {
-
-}
-
-// MARK: - UICollectionViewDataSource Delegate
-extension GameView: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        guard tileSet != nil else { return 0 }
-        
-        return tileSet!.rows * tileSet!.columns
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_ID, for:indexPath) as! TileCollectionViewCell
-        
-        if let tile = tileSet?.get()[indexPath.row] {
-            cell.tileValueLabel.text = String(tile.value)
-            cell.tileValueLabel.textColor = tile.forecolour
-            cell.tileBackgroundView.backgroundColor = tile.colour
-        } else {
-            // blank cell
-            cell.tileValueLabel.text = ""
-            cell.tileBackgroundView.backgroundColor = .white
-        }
-        
-        return cell
-    }
-    
-    
-    
 }

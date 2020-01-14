@@ -28,8 +28,16 @@ class TileSet {
     /// Delegate protocol that let's implementations know of certain tile events
     var delegate: TileSetDelegate?
     
-    /// private representation of the tiles. Nils mean there is no tile at that position
-    private var tiles: [Tile?]
+    /// Delegate to pass grid movement events to
+    var gridDelegate: TileSetGridDelegate?
+    
+    /**
+     Internal representation of the tiles. A nil element mean there is no tile at that position.
+     
+    - Important:
+     This array is intentially index 1 based. tiles[0,\*] and tiles[\*,0] should be ignored.
+    */
+    private var tiles: [[Tile?]]!
     
     /// number of rows in grid
     var rows: Int
@@ -37,66 +45,89 @@ class TileSet {
     /// number of columns in grid
     var columns: Int
     
+    /// Returns the highest value amongst all tiles
     var highestTileValue: Int {
-        if let maxTile = tiles.max(by: { $0?.value ?? 0 < $1?.value ?? 0}) {
-            return maxTile?.value ?? 0
-        } else {
-            return 0
-        }
+        
+        /// Yikes
+        let max = tiles.max { (tileRow1, tileRow2) -> Bool in
+            let maxTileRow1 = (tileRow1.max { return $0?.value ?? 0 < $1?.value ?? 0 })??.value ?? 0
+            let maxTileRow2 = (tileRow2.max { return $0?.value ?? 0 < $1?.value ?? 0 })??.value ?? 0
+            return maxTileRow1 < maxTileRow2
+            }?.max { $0?.value ?? 0 < $1?.value ?? 0}
+        
+        return max??.value ?? 0
     }
     
     // MARK: Initialisers
     
     /// initializer
     convenience init(rows: Int, columns: Int) {
-        try! self.init(rows: rows, columns: columns, tileValues: [Int?].init(repeating: nil, count: rows * columns))
+        try! self.init(rows: rows, columns: columns, tileValues: Array(repeating: Array(repeating: nil, count: columns), count: rows) )
     }
     
-    init(rows: Int, columns: Int, tileValues: [Int?]) throws {
-        guard rows * columns == tileValues.count else { throw TileSetError.IncorrectNumberOfTileValues }
+    /**
+     Initialise new TileSet
+     
+     - Parameters:
+        - rows: number of rows in the set
+        -  columns: number of columns in the set
+        - tileValues: zero index based, 2D array of tile values. Importantly, the rows in the array are in reverse order to make it easier when setting this parameter from unit tests. That is, the row at index 0 is actually row 4 of a 4x4 grid.
+     */
+    init(rows: Int, columns: Int, tileValues: [[Int?]]) throws {
+        guard tileValues.count == rows else { throw TileSetError.IncorrectNumberOfTileValues }
         
         self.rows = rows
         self.columns = columns
-        self.tiles = [Tile?]()
-        for i in 0..<(rows * columns) {
-            let value = tileValues[i]
-            self.tiles.append(value != nil ? Tile(value: value!) : nil)
+        
+        // initialise array to be one more row and column than the count since we are treating all zeros as 1 based not 0.
+        self.tiles = Array(repeating: Array(repeating: nil, count: columns + 1), count: rows + 1)
+        
+        for r in 1...rows {
+            let row = tileValues[r-1]
+            
+            // every element (row) of the array must be an array of length equal to the number of columns
+            if row.count != columns { throw TileSetError.IncorrectNumberOfTileValues }
+
+            for c in 1...columns {
+                if let value = tileValues[rows - r][c-1] {
+                    tiles[r][c] = Tile(value: value)
+                }
+            }
         }
     }
     
     // MARK: - Helpers
     
+    func numberOfSpaces() -> Int {
+        var count = 0
+        for r in 1...rows {
+            for c in 1...columns {
+                if tiles[r][c] == nil { count += 1}
+            }
+        }
+        return count
+    }
+        
     /**
      Returns a `GridReference` pointing to a random space in the grid. If there are no spaces the method returns nil.
      */
     func randomSpaceGridReference() -> GridReference? {
-        guard tiles.contains(nil) else { return nil }
         
-        // find a random space
-        let spaceTiles = tiles.filter({ $0 == nil })
-        let random = Int.random(in: 0..<spaceTiles.count)
+        let spaces = numberOfSpaces()
         
-        var count = 0
-        for r in 1...rows {
-            for c in 1...columns {
-                let reference = GridReference(row: r, column: c)
-                if get(reference).tile == nil {
-                    if count == random {
-                        return reference
+        if spaces > 0 {
+            let random = Int.random(in: 0..<spaces)
+            var count = 0
+            for r in 1...rows {
+                for c in 1...columns {
+                    if tiles[r][c] == nil {
+                        if count == random {
+                            return GridReference(row: r, column: c)
+                        }
+                        count += 1
                     }
-                    count += 1
                 }
             }
-        }
-        return nil
-    }
-    
-    /// Converts a grid reference into the index of the underlying tile array
-    func indexFromGridReference(_ reference: GridReference) -> Int? {
-        if isInBounds(reference) {
-            let r = reference.row
-            let c = reference.column
-            return columns * (r - 1) + c - 1
         }
         return nil
     }
@@ -120,15 +151,8 @@ class TileSet {
     /**
      Returns the raw underlying array of `Tile` records
      */
-    func get() -> [Tile?] {
+    func get() -> [[Tile?]] {
         return tiles
-    }
-    
-    /**
-     Returns an array of the underlying values. The first value in the array is (1, 1) followed by (1,2) and ending in (r, c)
-     */
-    func getValues() -> [Int?] {
-        return tiles.map({ $0?.value ?? nil })
     }
     
     /**
@@ -149,9 +173,7 @@ class TileSet {
         
         let isInsideGrid = isInBounds(reference)
         
-        let index = indexFromGridReference(reference)
-        
-        return TileResult(tile: index != nil ? tiles[index!] : nil, isInsideGrid: isInsideGrid, gridReference: reference)
+        return TileResult(tile: isInsideGrid ? tiles[reference.row][reference.column] : nil, isInsideGrid: isInsideGrid, gridReference: reference)
         
     }
     
@@ -184,47 +206,63 @@ class TileSet {
      
      If the tile can not move in that direction, because there's a competing tile in the way or the tile is at the edge of the grid, no changes are made.
      
-     If the adjacent tile's value matches the moving tile's value, they are merged and the adjacent tile's value will double.
+     If the adjacent tile's value matches the moving tile's value, they are merged and the moving tile's value will be doubled.
      
      If there is no adjacent tile and the moving tile has space to move into, it will be moved in the given direction.
      
      - Parameters:
         - reference: GridReference of the tile to move
         - direction: The `Direction` to move
-     
+        - iteration: Tiles are moved in iterations. Each iteration does a scan of the grid to see which tiles can be moved/merged. The iteration is passed to the `GridDelegate`to assist the order of move animations.
      - Returns: Flag indicating whether the move resulted in a tile moving or not.
      */
-    func moveTile(_ reference: GridReference, _ direction: Direction) -> Bool {
-                
+    func moveTile(_ reference: GridReference, _ direction: Direction, iteration: Int) -> Bool {
+        
         // get the tile that's moving
-        let tileToMoveResult = get(reference)
+        let movingTileResult = get(reference)
         
         // if this location doesn't have a tile, nothing to do
-        if tileToMoveResult.tile == nil {
+        if movingTileResult.tile == nil {
             return false
         }
         
         // get the tile that's adjacent to this tile in the direction it's moving
         let adjacentTileResult = getAdjacent(reference, direction)
         
+        // if the adjacent tile isn't in the grid then we can't move
+        if !adjacentTileResult.isInsideGrid {
+            return false
+        }
+        
         // if there is an adjacent tile, check the values are equal before moving
-        if let adjacentTile = adjacentTileResult.tile {
+        if let adjacentTile = adjacentTileResult.tile, let movingTile = movingTileResult.tile {
             
-            // check if they have the same value and neither have been merged before)
-            if tileToMoveResult.tile!.value == adjacentTile.value && (!tileToMoveResult.tile!.hasMerged && !adjacentTile.hasMerged)  {
+            // check if they have the same value and neither have been merged before
+            if movingTile.value == adjacentTile.value && (!movingTile.hasMerged && !adjacentTile.hasMerged)  {
                
-                // double it's value
-                adjacentTile.value = adjacentTile.value * 2
-                
-                delegate?.tileSet(self, didMatchTile: adjacentTile)
+                // double the moving tiles's value
+                movingTile.value = movingTile.value * 2
                 
                 // prevent this tile from merging again in a moveAll operation
-                adjacentTile.hasMerged = true
+                movingTile.hasMerged = true
                 
-                // remove the moving tile as it's merged with the adjancent one
-                if let index =  indexFromGridReference(tileToMoveResult.gridReference!){
-                    tiles[index] = nil
-                }
+                // remove reference to the moving cell in it's original location
+                tiles[reference.row][reference.column] = nil
+                
+                // let delegate know the tile was removed
+                gridDelegate?.tileSet(self, tileRemovedFrom: adjacentTileResult.gridReference!, iteration: iteration)
+                
+                // put the movingTile in the adjacent location
+            tiles[adjacentTileResult.gridReference!.row][adjacentTileResult.gridReference!.column] = movingTile
+                
+                // tell the delegate the movingTile has moved
+                gridDelegate?.tileSet(self, tileMovedFrom: reference, inDirection: direction, iteration: iteration)
+                    
+                    // ...and that it's value is new
+                gridDelegate?.tileSet(self, tileValueChangedTo: movingTile.value, at: adjacentTileResult.gridReference!, iteration: iteration)
+                    
+                    // ...and that the moving tile matched
+                delegate?.tileSet(self, didMatchTile: movingTile)
                 
                 // successful merge
                 return true
@@ -234,19 +272,17 @@ class TileSet {
             // if we can move into the adjacent space, then do it
             if let adjacentTileReference = adjacentTileResult.gridReference {
                 
-                if let indexOfAdjacentTile = indexFromGridReference(adjacentTileReference) {
+                // Point the adjacent location to the moving tile
+                tiles[adjacentTileReference.row][adjacentTileReference.column] = movingTileResult.tile
                     
-                    // Point the adjacent location to the moving tile
-                    tiles[indexOfAdjacentTile] = tileToMoveResult.tile
-                    
-                    // Remove the original reference to the moving tile
-                    if let index =  indexFromGridReference(tileToMoveResult.gridReference!){
-                        tiles[index] = nil
-                    }
-                    
-                    // successful move into space
-                    return true
-                }
+                // Remove the original reference to the moving tile
+            tiles[movingTileResult.gridReference!.row][movingTileResult.gridReference!.column] = nil
+                
+                // successful move into free space
+                gridDelegate?.tileSet(self, tileMovedFrom: movingTileResult.gridReference!, inDirection: direction, iteration: iteration)
+                
+                return true
+            
             }
         }
         
@@ -259,14 +295,15 @@ class TileSet {
      
      - Parameters:
         - direction: the direction in which to moves tiles
-     
-     - Returns: A flag indicating whether any tiles were moved.
+        - completion: optional closure called once the move operations have completed. It takes a single Bool argument to indicate if any tiles moved
      */
-    func moveTiles(direction: Direction) -> Bool {
+    func moveTiles(direction: Direction, completion: ((Bool) -> Void)?) {
         
         // Clear merge states on all tiles
-        for tile in tiles {
-            tile?.hasMerged = false
+        for rows in tiles {
+            for tile in rows {
+                tile?.hasMerged = false
+            }
         }
         
         // To ensure merge precedence we scan the rows and columns according to the direction
@@ -276,18 +313,22 @@ class TileSet {
         // right - scan right to left
         var rRange = stride(from: 1, to: rows+1, by: 1)
         var cRange = stride(from: 1, to: columns+1, by: 1)
-        if direction == .down { rRange = stride(from: rows, to: 0, by: -1)}
+        if direction == .up { rRange = stride(from: rows, to: 0, by: -1)}
         if direction == .right { cRange = stride(from: columns, to: 0, by: -1) }
         
         // set to 1 to ensure we try at least one iteration
         var numberOfMovedTiles = -1
+        var iteration = 0
         var movedSome = false
         while numberOfMovedTiles != 0 {
             numberOfMovedTiles = 0
+            iteration += 1
             for r in rRange {
                 for c in cRange {
                     let reference = GridReference(row: r, column: c)
-                    if (moveTile(reference, direction)) {
+                    
+                    if (moveTile(reference, direction, iteration: iteration)) {
+                        //print("Moved from \(reference) in direction \(direction)")
                         movedSome = true
                         numberOfMovedTiles += 1
                     }
@@ -295,7 +336,7 @@ class TileSet {
             }
         }
         
-        return movedSome
+        completion?(movedSome)
     }
     
     /**
@@ -303,8 +344,8 @@ class TileSet {
      */
     func canMove() -> Bool {
 
-        // if there are any spaces you can move
-        if tiles.filter({$0 == nil }).count > 0 {
+        // if there are any spaces you must be able to move
+        if numberOfSpaces() > 0 {
             return true
         } else {
             // if there are no spaces but there are adjacent and equal tiles, you can still move
@@ -340,9 +381,8 @@ class TileSet {
         - tile: the tile to add to the grid
      */
     func addTile(_ reference: GridReference, tile: Tile) {
-        if let index = indexFromGridReference(reference) {
-            tiles[index] = tile
-        }
+        tiles[reference.row][reference.column] = tile
+        gridDelegate?.tileSet(self, tileAdded: tile, reference: reference)
     }
     
     /**
@@ -350,10 +390,30 @@ class TileSet {
      */
     func addTileToRandomSpace(tile: Tile) {
         if let reference = randomSpaceGridReference() {
-            if let index = indexFromGridReference(reference) {
-                tiles[index] = tile
+            self.addTile(reference, tile: tile)
+        }
+    }
+    
+    // MARK: Test Helpers
+    
+    /**
+     Helper function used only in unit tests to compare state after test runs.
+     
+     - Parameters:
+        - values: zero index based, 2D array of tile values. Importantly, the rows in the array are in reverse order to make it easier when setting this parameter from unit tests. That is, the row at index 0 is actually row 4 of a 4x4 grid.
+     */
+    func isEqualTo(_ values: [[Int?]]) -> Bool {
+        
+        for r in 1...rows {
+            for c in 1...columns {
+                if tiles[r][c]?.value != values[rows-r][c - 1] {
+                    return false
+                }
             }
         }
+        
+        // if you get here then all the values are equal
+        return true
     }
 }
 
@@ -362,19 +422,23 @@ class TileSet {
 extension TileSet: CustomDebugStringConvertible {
     var debugDescription: String {
         
-        var result: String = ""
+        var result = ""
         let leading = "     "
         
         for r in 1...rows {
+            var row: String = ""
             for c in 1...columns {
-                let ref = GridReference(row: r, column: c)
-                let value = get(ref).tile?.value
+                
+                //let ref = GridReference(row: r, column: c)
+                let value = tiles[r][c]?.value //get(ref).tile?.value
                 let valueString = value == nil ? "-" : String(value!)
-                result.append(leading.suffix(leading.count - valueString.count).description)
-                result.append(valueString)
+                row.append(leading.suffix(leading.count - valueString.count).description)
+                row.append(valueString)
             }
-            // newline
-            result.append("\n")
+            row.append("\n")
+            
+            result.insert(contentsOf: row, at: result.startIndex)
+            
         }
         return result
     }

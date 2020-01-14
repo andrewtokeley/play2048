@@ -24,6 +24,8 @@ protocol LoaderPresenterApi: PresenterProtocol {
 //MARK: - LoaderInteractor API
 protocol LoaderInteractorApi: InteractorProtocol {
     
+    func authenticateUser(completion: (() -> Void)?)
+    
     func getHighScores(completion: (([Score], Error?) -> Void)?)
     
 }

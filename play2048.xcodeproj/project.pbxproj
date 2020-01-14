@@ -141,6 +141,19 @@
 		D85D9D2D23B1488B000FC9E1 /* LoaderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D2023B1488B000FC9E1 /* LoaderInteractor.swift */; };
 		D85D9D2E23B1488B000FC9E1 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D2123B1488B000FC9E1 /* LoaderView.swift */; };
 		D85D9D2F23B1488B000FC9E1 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85D9D2123B1488B000FC9E1 /* LoaderView.swift */; };
+		D864E0CE23CA59CD001BD3D3 /* SKActionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864E0CA23CA59CC001BD3D3 /* SKActionExtension.swift */; };
+		D864E0CF23CA59CD001BD3D3 /* GridScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864E0CB23CA59CC001BD3D3 /* GridScene.swift */; };
+		D864E0D023CA59CD001BD3D3 /* TileNodeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864E0CC23CA59CD001BD3D3 /* TileNodeActions.swift */; };
+		D864E0D123CA59CD001BD3D3 /* TileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864E0CD23CA59CD001BD3D3 /* TileNode.swift */; };
+		D864E0D323CA7CA7001BD3D3 /* GridSceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864E0D223CA7CA7001BD3D3 /* GridSceneTests.swift */; };
+		D8709E4723CB148800DE9A2D /* GridScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864E0CB23CA59CC001BD3D3 /* GridScene.swift */; };
+		D8709E4823CB148C00DE9A2D /* SKActionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864E0CA23CA59CC001BD3D3 /* SKActionExtension.swift */; };
+		D8709E4923CB148F00DE9A2D /* TileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864E0CD23CA59CD001BD3D3 /* TileNode.swift */; };
+		D8709E4A23CB149100DE9A2D /* TileNodeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D864E0CC23CA59CD001BD3D3 /* TileNodeActions.swift */; };
+		D8709E4C23CC3A3600DE9A2D /* BlankTileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8709E4B23CC3A3600DE9A2D /* BlankTileNode.swift */; };
+		D8709E4D23CC3A3700DE9A2D /* BlankTileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8709E4B23CC3A3600DE9A2D /* BlankTileNode.swift */; };
+		D8C2200F23C72ACB0007A58B /* FeatureFlags_Prod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C2200E23C72ACB0007A58B /* FeatureFlags_Prod.swift */; };
+		D8C2201023C72B090007A58B /* FeatureFlags_Dev.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C2200B23C661CA0007A58B /* FeatureFlags_Dev.swift */; };
 		D8D3531E23AAC17F00E4B7B8 /* FirestoreEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3531D23AAC17F00E4B7B8 /* FirestoreEntity.swift */; };
 		D8D3532023AAC28100E4B7B8 /* FirestoreScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3531F23AAC28100E4B7B8 /* FirestoreScore.swift */; };
 		D8D3532223AAC7A900E4B7B8 /* FirestoreScoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3532123AAC7A900E4B7B8 /* FirestoreScoreService.swift */; };
@@ -264,6 +277,14 @@
 		D85D9D1F23B1488B000FC9E1 /* LoaderModuleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderModuleApi.swift; sourceTree = "<group>"; };
 		D85D9D2023B1488B000FC9E1 /* LoaderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderInteractor.swift; sourceTree = "<group>"; };
 		D85D9D2123B1488B000FC9E1 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		D864E0CA23CA59CC001BD3D3 /* SKActionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKActionExtension.swift; sourceTree = "<group>"; };
+		D864E0CB23CA59CC001BD3D3 /* GridScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridScene.swift; sourceTree = "<group>"; };
+		D864E0CC23CA59CD001BD3D3 /* TileNodeActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileNodeActions.swift; sourceTree = "<group>"; };
+		D864E0CD23CA59CD001BD3D3 /* TileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileNode.swift; sourceTree = "<group>"; };
+		D864E0D223CA7CA7001BD3D3 /* GridSceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSceneTests.swift; sourceTree = "<group>"; };
+		D8709E4B23CC3A3600DE9A2D /* BlankTileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankTileNode.swift; sourceTree = "<group>"; };
+		D8C2200B23C661CA0007A58B /* FeatureFlags_Dev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags_Dev.swift; sourceTree = "<group>"; };
+		D8C2200E23C72ACB0007A58B /* FeatureFlags_Prod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags_Prod.swift; sourceTree = "<group>"; };
 		D8D3531D23AAC17F00E4B7B8 /* FirestoreEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreEntity.swift; sourceTree = "<group>"; };
 		D8D3531F23AAC28100E4B7B8 /* FirestoreScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreScore.swift; sourceTree = "<group>"; };
 		D8D3532123AAC7A900E4B7B8 /* FirestoreScoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreScoreService.swift; sourceTree = "<group>"; };
@@ -357,6 +378,7 @@
 		D84DC18623B550D700303D19 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D8C2200A23C661AC0007A58B /* FeatureFlags */,
 				D84DC18723B5515500303D19 /* launchimage_1125x2436.png */,
 				D8538684239EB70600E2BB1F /* Assets.xcassets */,
 			);
@@ -424,6 +446,7 @@
 				D8E71FEF239F20EF001DDDE9 /* TileSetTests.swift */,
 				D8538697239EB70600E2BB1F /* Info.plist */,
 				D8450E2623AD93B200296676 /* GamePresenterTests.swift */,
+				D864E0D223CA7CA7001BD3D3 /* GridSceneTests.swift */,
 			);
 			path = play2048Tests;
 			sourceTree = "<group>";
@@ -490,6 +513,7 @@
 		D85386E4239EC38F00E2BB1F /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				D864E0C923CA5978001BD3D3 /* Grid */,
 				D85386D8239EC38800E2BB1F /* GameDisplayData.swift */,
 				D85386D9239EC38800E2BB1F /* GamePresenter.swift */,
 				D85386DA239EC38800E2BB1F /* GameRouter.swift */,
@@ -531,6 +555,27 @@
 				D85D9D2123B1488B000FC9E1 /* LoaderView.swift */,
 			);
 			path = Loader;
+			sourceTree = "<group>";
+		};
+		D864E0C923CA5978001BD3D3 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				D864E0CB23CA59CC001BD3D3 /* GridScene.swift */,
+				D864E0CA23CA59CC001BD3D3 /* SKActionExtension.swift */,
+				D864E0CD23CA59CD001BD3D3 /* TileNode.swift */,
+				D8709E4B23CC3A3600DE9A2D /* BlankTileNode.swift */,
+				D864E0CC23CA59CD001BD3D3 /* TileNodeActions.swift */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		D8C2200A23C661AC0007A58B /* FeatureFlags */ = {
+			isa = PBXGroup;
+			children = (
+				D8C2200B23C661CA0007A58B /* FeatureFlags_Dev.swift */,
+				D8C2200E23C72ACB0007A58B /* FeatureFlags_Prod.swift */,
+			);
+			path = FeatureFlags;
 			sourceTree = "<group>";
 		};
 		D8E71FE0239F1FDC001DDDE9 /* Model */ = {
@@ -830,6 +875,7 @@
 				D840751323AA262E00121170 /* UserInterface+Split.swift in Sources */,
 				D840751423AA262E00121170 /* ScoreServiceInterface.swift in Sources */,
 				D8FDCE9823AAF7BF006F4CE0 /* FirestoreScoreService.swift in Sources */,
+				D8709E4A23CB149100DE9A2D /* TileNodeActions.swift in Sources */,
 				D840751523AA262E00121170 /* AppModules.swift in Sources */,
 				D840751623AA262E00121170 /* GameModuleApi.swift in Sources */,
 				D840751723AA262E00121170 /* Presenter.swift in Sources */,
@@ -837,6 +883,7 @@
 				D840751923AA262E00121170 /* HighScoreEntryTableViewCell.swift in Sources */,
 				D840751A23AA262E00121170 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				D840751B23AA262E00121170 /* NSArray+PureLayout.m in Sources */,
+				D8C2201023C72B090007A58B /* FeatureFlags_Dev.swift in Sources */,
 				D84DC18223B15CF200303D19 /* GameSetupData.swift in Sources */,
 				D840751C23AA262E00121170 /* Module.swift in Sources */,
 				D840751D23AA262E00121170 /* Direction.swift in Sources */,
@@ -869,6 +916,7 @@
 				D840753223AA262E00121170 /* ALView+PureLayout.m in Sources */,
 				D85D9D1723B06AEA000FC9E1 /* HighScoresSetupData.swift in Sources */,
 				D840753423AA262E00121170 /* UserInterface.swift in Sources */,
+				D8709E4923CB148F00DE9A2D /* TileNode.swift in Sources */,
 				D840753523AA262E00121170 /* TileSetDelegate.swift in Sources */,
 				D8450E2C23AECB7500296676 /* UIViewControllerExtension.swift in Sources */,
 				D840753723AA262E00121170 /* TileCollectionViewCell.swift in Sources */,
@@ -877,13 +925,16 @@
 				D840753923AA262E00121170 /* HighScoresDisplayData.swift in Sources */,
 				D85D9D2D23B1488B000FC9E1 /* LoaderInteractor.swift in Sources */,
 				D84DC1E723BADDE000303D19 /* GameOverView.swift in Sources */,
+				D8709E4823CB148C00DE9A2D /* SKActionExtension.swift in Sources */,
 				D840753A23AA262E00121170 /* ViperitError.swift in Sources */,
+				D8709E4D23CC3A3700DE9A2D /* BlankTileNode.swift in Sources */,
 				D84DC1E323BADDE000303D19 /* GameOverModuleApi.swift in Sources */,
 				D840753B23AA262E00121170 /* HighScoresInteractor.swift in Sources */,
 				D840753C23AA262E00121170 /* Tile.swift in Sources */,
 				D840753D23AA262E00121170 /* HighScoresPresenter.swift in Sources */,
 				D840753E23AA262E00121170 /* FirestoreEntityService.swift in Sources */,
 				D84DC1E123BADDE000303D19 /* GameOverRouter.swift in Sources */,
+				D8709E4723CB148800DE9A2D /* GridScene.swift in Sources */,
 				D84DC1ED23BAE6CE00303D19 /* GameOverSetupData.swift in Sources */,
 				D8FDCE9723AAF7BA006F4CE0 /* FirestoreScore.swift in Sources */,
 				D840753F23AA262E00121170 /* GameView.swift in Sources */,
@@ -928,6 +979,7 @@
 				D8E71FE9239F1FFB001DDDE9 /* GridReference.swift in Sources */,
 				D85386BE239EBF1A00E2BB1F /* DisplayData.swift in Sources */,
 				D8E71FE7239F1FFB001DDDE9 /* TileSet.swift in Sources */,
+				D8C2200F23C72ACB0007A58B /* FeatureFlags_Prod.swift in Sources */,
 				D85386CE239EBFAA00E2BB1F /* String+.swift in Sources */,
 				D85D9D2E23B1488B000FC9E1 /* LoaderView.swift in Sources */,
 				D85D9D2A23B1488B000FC9E1 /* LoaderModuleApi.swift in Sources */,
@@ -937,6 +989,7 @@
 				D84DC1DE23BADDE000303D19 /* GameOverPresenter.swift in Sources */,
 				D85386C0239EBF1A00E2BB1F /* Interactor.swift in Sources */,
 				D84DC1E423BADDE000303D19 /* GameOverInteractor.swift in Sources */,
+				D864E0D023CA59CD001BD3D3 /* TileNodeActions.swift in Sources */,
 				D85812A123A417D6007809C1 /* HighScoresModuleApi.swift in Sources */,
 				D85386CD239EBFAA00E2BB1F /* UserInterface+Collection.swift in Sources */,
 				D85812A023A417D6007809C1 /* HighScoresRouter.swift in Sources */,
@@ -948,10 +1001,13 @@
 				D8450E2B23AEC90B00296676 /* UIViewControllerExtension.swift in Sources */,
 				D8E71FDF239ECD48001DDDE9 /* TileCollectionViewCell.swift in Sources */,
 				D8D3531E23AAC17F00E4B7B8 /* FirestoreEntity.swift in Sources */,
+				D864E0D123CA59CD001BD3D3 /* TileNode.swift in Sources */,
+				D864E0CF23CA59CD001BD3D3 /* GridScene.swift in Sources */,
 				D8E71FE8239F1FFB001DDDE9 /* TileResult.swift in Sources */,
 				D85D9D2C23B1488B000FC9E1 /* LoaderInteractor.swift in Sources */,
 				D84DC1E623BADDE000303D19 /* GameOverView.swift in Sources */,
 				D858129E23A417D6007809C1 /* HighScoresDisplayData.swift in Sources */,
+				D8709E4C23CC3A3600DE9A2D /* BlankTileNode.swift in Sources */,
 				D84DC1E223BADDE000303D19 /* GameOverModuleApi.swift in Sources */,
 				D85386C3239EBF1A00E2BB1F /* ViperitError.swift in Sources */,
 				D85812A223A417D6007809C1 /* HighScoresInteractor.swift in Sources */,
@@ -964,6 +1020,7 @@
 				D85D9D2823B1488B000FC9E1 /* LoaderRouter.swift in Sources */,
 				D8E71FFC23A1CC2E001DDDE9 /* Score.swift in Sources */,
 				D85D9D2623B1488B000FC9E1 /* LoaderPresenter.swift in Sources */,
+				D864E0CE23CA59CD001BD3D3 /* SKActionExtension.swift in Sources */,
 				D85386D0239EBFAA00E2BB1F /* UserInterface+Table.swift in Sources */,
 				D85812A323A417D6007809C1 /* HighScoresView.swift in Sources */,
 			);
@@ -974,6 +1031,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8450E2923AE0BB300296676 /* GamePresenterTests.swift in Sources */,
+				D864E0D323CA7CA7001BD3D3 /* GridSceneTests.swift in Sources */,
 				D8E71FF0239F20EF001DDDE9 /* TileSetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1018,6 +1076,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "andrewtokeley.com.play2048-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "play2048/play2048-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1043,6 +1102,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "andrewtokeley.com.play2048-dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "play2048/play2048-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1181,6 +1241,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = andrewtokeley.com.play2048;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "play2048/play2048-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

@@ -11,6 +11,7 @@ import UIKit
 
 extension UIColor {
 
+    // MARK: - Tile colours
     
     public class var textFieldBackground: UIColor {
         return UIColor(red: 153/255, green: 153/255, blue: 153/255, alpha: 1)
@@ -71,4 +72,50 @@ extension UIColor {
     public class var gameBackground: UIColor {
         return UIColor(red: 67/255, green: 67/255, blue: 67/255, alpha: 1)
     }
+    
+    // MARK: - Instance functions
+    
+    func toComponents() -> ColorComponents {
+        var components = ColorComponents()
+        getRed(&components.red, green: &components.green, blue: &components.blue, alpha: &components.alpha)
+        return components
+    }
+    
+    // MARK: - Static functions
+    
+    static func lerp(a : CGFloat, b : CGFloat, fraction : CGFloat) -> CGFloat
+    {
+        return (b-a) * fraction + a
+    }
+    
+    static func tileForecolour(_ value: Int) -> UIColor {
+        if value < 256 {
+            return .gameBackground
+        }
+        return .white
+    }
+    
+    static func tileColour(_ value: Int) -> UIColor {
+        switch value {
+        case 2: return .tile2
+        case 4: return .tile4
+        case 8: return .tile8
+        case 16: return .tile16
+        case 32: return .tile32
+        case 64: return .tile64
+        case 128: return .tile128
+        case 256: return .tile256
+        case 512: return .tile512
+        case 1024: return .tile1024
+        case 2048: return .tile2048
+        default: return .white
+        }
+    }
+}
+
+struct ColorComponents {
+    var red = CGFloat(0)
+    var green = CGFloat(0)
+    var blue = CGFloat(0)
+    var alpha = CGFloat(0)
 }

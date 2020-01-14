@@ -36,27 +36,27 @@ class TileSetTests: XCTestCase {
         XCTAssert(set.isInBounds(GridReference(row: 2, column: 2)))
     }
     
-    func testGetIndex() {
-        let set = TileSet(rows: 4, columns: 4)
-        
-        if let index = set.indexFromGridReference(GridReference(row: 1, column: 1)) {
-            XCTAssert(index == 0)
-            
-            if let index = set.indexFromGridReference(GridReference(row: 4, column: 4)) {
-                XCTAssert(index == 15)
-                
-                if let index = set.indexFromGridReference(GridReference(row: 3, column: 1)) {
-                    XCTAssert(index == 8)
-                } else {
-                    XCTFail()
-                }
-            } else {
-                XCTFail()
-            }
-        } else {
-            XCTFail()
-        }
-    }
+//    func testGetIndex() {
+//        let set = TileSet(rows: 4, columns: 4)
+//
+//        if let index = set.indexFromGridReference(GridReference(row: 1, column: 1)) {
+//            XCTAssert(index == 0)
+//
+//            if let index = set.indexFromGridReference(GridReference(row: 4, column: 4)) {
+//                XCTAssert(index == 15)
+//
+//                if let index = set.indexFromGridReference(GridReference(row: 3, column: 1)) {
+//                    XCTAssert(index == 8)
+//                } else {
+//                    XCTFail()
+//                }
+//            } else {
+//                XCTFail()
+//            }
+//        } else {
+//            XCTFail()
+//        }
+//    }
 
     func testAddTile() {
         // From this
@@ -71,7 +71,7 @@ class TileSetTests: XCTestCase {
         //  -   -   2   -
         //  -   -   -   -
         
-        let reference = GridReference(row: 2, column: 2)
+        let reference = GridReference(row: 2, column: 3)
         let set = TileSet(rows: 4, columns: 4)
         let tile = Tile(value: 2)
         set.addTile(reference, tile: tile)
@@ -81,7 +81,7 @@ class TileSetTests: XCTestCase {
         XCTAssertNotNil(result.tile)
         XCTAssertTrue(result.isInsideGrid)
         XCTAssertTrue(result.gridReference?.row == 2)
-        XCTAssertTrue(result.gridReference?.column == 2)
+        XCTAssertTrue(result.gridReference?.column == 3)
     }
 
     func testChangingValue() {
@@ -101,12 +101,25 @@ class TileSetTests: XCTestCase {
         XCTAssert(result2.tile?.value == 4)
     }
     
+    func testNumberOfSpaces() {
+        let initialState =  [
+              [  nil,  4,  8,  nil],
+              [  4,  2,  4,   8],
+              [  8, 16,  nil,   4],
+              [ 16,  4,  nil,  2]
+            ]
+        
+            // set up initial grid
+            let set = try! TileSet(rows: 4, columns: 4, tileValues: initialState)
+            
+        XCTAssert(set.numberOfSpaces() == 4)
+    }
     func testCanMoveFalse() {
         let initialState =  [
-          2,  4,  8,  16,
-          4,  2,  4,   8,
-          8, 16,  2,   4,
-         16,  4,  16,  2
+          [  2,  4,  8,  16],
+          [  4,  2,  4,   8],
+          [  8, 16,  2,   4],
+          [ 16,  4,  16,  2]
         ]
     
         // set up initial grid
@@ -117,10 +130,10 @@ class TileSetTests: XCTestCase {
     
     func testHighestValueTile() {
         let initialState =  [
-            nil,nil,nil,nil,
-              4,  2,  4, 32,
-              8, 16,  2,  4,
-             16,  4, 16,  2
+            [nil,nil,nil,nil],
+            [  4,  2,  4, 32],
+            [  8, 16,  2,  4],
+            [ 16,  4, 16,  2]
         ]
     
         // set up initial grid
@@ -131,10 +144,10 @@ class TileSetTests: XCTestCase {
     
     func testHighestValueTileWhenTwoHigh() {
         let initialState =  [
-            nil,nil,nil,nil,
-              4,  2,  4, 32,
-              8, 16, 32,  4,
-             16,  4, 16,  2
+            [nil,nil,nil,nil],
+            [  4,  2,  4, 32],
+            [  8, 16, 32,  4],
+            [ 16,  4, 16,  2]
         ]
     
         // set up initial grid
@@ -144,11 +157,11 @@ class TileSetTests: XCTestCase {
     }
     
     func testHighestValueTileBoardEmpty() {
-        let initialState: [Int?] =  [
-            nil,nil,nil,nil,
-            nil,nil,nil,nil,
-            nil,nil,nil,nil,
-            nil,nil,nil,nil
+        let initialState: [[Int?]] = [
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil]
         ]
     
         // set up initial grid
@@ -159,10 +172,10 @@ class TileSetTests: XCTestCase {
     
     func testCanMoveTrue() {
         let initialState =  [
-          2,  4,  8,  16,
-          4,  2,  4,  16,
-          8, 16,  2,   4,
-         16,  4,  16,  2
+         [  2,  4,  8,  16],
+         [  4,  2,  4,  16],
+         [  8, 16,  2,   4],
+         [ 16,  4,  16,  2]
         ]
     
         // set up initial grid
@@ -173,31 +186,50 @@ class TileSetTests: XCTestCase {
     
     func testAdjacentTile() {
         let initialState =  [
-            nil,nil,nil,nil,
-            nil,nil,  4,nil,
-            nil,  2,  2,  8,
-            nil,nil, 16,nil
+            [nil,nil,nil,nil],
+            [nil,nil,  4,nil],
+            [nil,  2,  2,  8],
+            [nil,nil, 16,nil]
         ]
         
         // set up initial grid
         let set = try! TileSet(rows: 4, columns: 4, tileValues: initialState)
 
-        let reference3x3 = GridReference(row: 3, column: 3)
-        let reference3x4 = GridReference(row: 3, column: 4)
-        let reference2x3 = GridReference(row: 2, column: 3)
+        let reference2x3 = GridReference(row: 2, column: 3) // middle 2
+        let reference2x4 = GridReference(row: 2, column: 4) // 8
         
-        XCTAssertTrue(set.getAdjacent(reference3x3, .left).tile?.value == 2)
-        XCTAssertTrue(set.getAdjacent(reference3x3, .right).tile?.value == 8)
-        XCTAssertTrue(set.getAdjacent(reference3x3, .up).tile?.value == 4)
-        XCTAssertTrue(set.getAdjacent(reference3x3, .down).tile?.value == 16)
+        XCTAssertTrue(set.getAdjacent(reference2x3, .left).tile?.value == 2)
+        XCTAssertTrue(set.getAdjacent(reference2x3, .right).tile?.value == 8)
+        XCTAssertTrue(set.getAdjacent(reference2x3, .up).tile?.value == 4)
+        XCTAssertTrue(set.getAdjacent(reference2x3, .down).tile?.value == 16)
         
-        // Space above tile2x3
-        XCTAssertTrue(set.getAdjacent(reference2x3, .up).tile == nil)
+        // Space above tile2x4
+        XCTAssertTrue(set.getAdjacent(reference2x4, .up).tile == nil)
         
-        // Out of bounds to the right of tile3x4
-        XCTAssertFalse(set.getAdjacent(reference3x4, .right).isInsideGrid)
+        // Out of bounds to the right of tile2x4
+        XCTAssertFalse(set.getAdjacent(reference2x4, .right).isInsideGrid)
     }
     
+    func testMoveAfterMerge() {
+        let initialState =  [
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil],
+            [nil,  2,nil,  2],
+            [nil,nil,nil,nil]
+        ]
+        let expectedState = [
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil],
+            [  4,nil,nil,nil],
+            [nil,nil,nil,nil]
+        ]
+        
+        // set up initial grid
+        let set = try! TileSet(rows: 4, columns: 4, tileValues: initialState)
+
+        XCTAssertTrue(set.moveTiles(direction: .left))
+        XCTAssertTrue(set.isEqualTo(expectedState))
+    }
     func testMoveWhenNoTile() {
         //  -   -   -   -
         //  -   -   -   -
@@ -224,16 +256,16 @@ class TileSetTests: XCTestCase {
     
     func testMoveAllWithMerges() {
         let initialState =  [
-            nil,nil,nil,nil,
-            nil,  4,nil,nil,
-            nil,  2,  2,nil,
-            nil,nil,nil,nil
+            [nil,nil,nil,nil],
+            [nil,  4,nil,nil],
+            [nil,  2,  2,nil],
+            [nil,nil,nil,nil]
         ]
         let expectedState = [
-            nil,nil,nil,nil,
-            nil,nil,nil,nil,
-            nil,nil,nil,nil,
-              8,nil,nil,nil
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil],
+            [  8,nil,nil,nil]
         ]
         
         // set up initial grid
@@ -241,7 +273,7 @@ class TileSetTests: XCTestCase {
 
         XCTAssertTrue(set.moveTiles(direction: .left))
         XCTAssertTrue(set.moveTiles(direction: .down))
-        XCTAssertTrue(set.getValues() == expectedState)
+        XCTAssertTrue(set.isEqualTo(expectedState))
     }
     
     /**
@@ -251,16 +283,16 @@ class TileSetTests: XCTestCase {
      */
     func testMovePrecedenceDown() {
         let initialState =  [
-            nil,nil,nil,nil,
-            nil,nil,nil,  2,
-            nil,nil,nil,  2,
-            nil,nil,nil,  2
+            [nil,nil,nil,nil],
+            [nil,nil,nil,  2],
+            [nil,nil,nil,  2],
+            [nil,nil,nil,  2]
         ]
         let expectedState = [
-            nil,nil,nil,nil,
-            nil,nil,nil,nil,
-            nil,nil,nil,  2,
-            nil,nil,nil,  4
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil],
+            [nil,nil,nil,  2],
+            [nil,nil,nil,  4]
         ]
         
         // set up initial grid
@@ -268,7 +300,7 @@ class TileSetTests: XCTestCase {
 
         let result = set.moveTiles(direction: .down)
         XCTAssertTrue(result)
-        XCTAssertTrue(set.getValues() == expectedState)
+        XCTAssertTrue(set.isEqualTo(expectedState))
     }
     
     /**
@@ -279,16 +311,16 @@ class TileSetTests: XCTestCase {
     func testMovePrecedenceUp() {
         
         let initialState =  [
-            nil,nil,nil,nil,
-            nil,nil,nil,  2,
-            nil,nil,nil,  2,
-            nil,nil,nil,  2
+            [nil,nil,nil,nil],
+            [nil,nil,nil,  2],
+            [nil,nil,nil,  2],
+            [nil,nil,nil,  2]
         ]
         let expectedState = [
-            nil,nil,nil,  4,
-            nil,nil,nil,  2,
-            nil,nil,nil,nil,
-            nil,nil,nil,nil
+            [nil,nil,nil,  4],
+            [nil,nil,nil,  2],
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil]
         ]
         
         // set up initial grid
@@ -296,7 +328,7 @@ class TileSetTests: XCTestCase {
 
         let result = set.moveTiles(direction: .up)
         XCTAssertTrue(result)
-        XCTAssertTrue(set.getValues() == expectedState)
+        XCTAssertTrue(set.isEqualTo(expectedState))
     }
     /**
      If there are multiple matches, then the direction of the move determines precedence.
@@ -306,16 +338,16 @@ class TileSetTests: XCTestCase {
     func testMovePrecedenceRight() {
         
         let initialState =  [
-            nil,  2,  2,  2,
-            nil,nil,nil,nil,
-              4,  4,  4,  4,
-            nil,nil,nil,nil
+            [nil,  2,  2,  2],
+            [nil,nil,nil,nil],
+            [  4,  4,  4,  4],
+            [nil,nil,nil,nil]
         ]
         let expectedState = [
-            nil,nil,  2,  4,
-            nil,nil,nil,nil,
-            nil,nil,  8,  8,
-            nil,nil,nil,nil
+            [nil,nil,  2,  4],
+            [nil,nil,nil,nil],
+            [nil,nil,  8,  8],
+            [nil,nil,nil,nil]
         ]
         
         // set up initial grid
@@ -323,22 +355,22 @@ class TileSetTests: XCTestCase {
 
         let result = set.moveTiles(direction: .right)
         XCTAssertTrue(result)
-        XCTAssertTrue(set.getValues() == expectedState)
+        XCTAssertTrue(set.isEqualTo(expectedState))
     }
     
     func testMovePrecedenceLeft() {
         
         let initialState =  [
-            nil,nil,nil,nil,
-            2,2,2,nil,
-            nil,nil,nil,nil,
-            nil,nil,nil,nil
+            [nil,nil,nil,nil],
+            [  2,  2,  2,nil],
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil]
         ]
         let expectedState = [
-            nil,nil,nil,nil,
-            4,2,nil,nil,
-            nil,nil,nil,nil,
-            nil,nil,nil,nil
+            [nil,nil,nil,nil],
+            [  4,  2,nil,nil],
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil]
         ]
         
         // set up initial grid
@@ -346,21 +378,21 @@ class TileSetTests: XCTestCase {
 
         let result = set.moveTiles(direction: .left)
         XCTAssertTrue(result)
-        XCTAssertTrue(set.getValues() == expectedState)
+        XCTAssertTrue(set.isEqualTo(expectedState))
     }
     
     func testMoveLeftWithTwoMerges() {
         let initialState =  [
-            nil,nil,nil,nil,
-            2,2,4,4,
-            nil,nil,nil,nil,
-            nil,nil,nil,nil
+            [nil,nil,nil,nil],
+            [  2,  2,  4,  4],
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil]
         ]
         let expectedState = [
-            nil,nil,nil,nil,
-            4,8,nil,nil,
-            nil,nil,nil,nil,
-            nil,nil,nil,nil
+            [nil,nil,nil,nil],
+            [  4,  8,nil,nil],
+            [nil,nil,nil,nil],
+            [nil,nil,nil,nil]
         ]
         
         // set up initial grid
@@ -368,7 +400,7 @@ class TileSetTests: XCTestCase {
 
         let result = set.moveTiles(direction: .left)
         XCTAssertTrue(result)
-        XCTAssertTrue(set.getValues() == expectedState, String(describing: set))
+        XCTAssertTrue(set.isEqualTo(expectedState), String(describing: set))
     }
     
     func testTemp() {

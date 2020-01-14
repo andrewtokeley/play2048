@@ -15,11 +15,11 @@ class Tile {
     private let id: String = UUID().uuidString
     
     var colour: UIColor {
-        return colourForValue(value)
+        return UIColor.tileColour(value)
     }
     
     var forecolour: UIColor {
-        return forecolourForValue(value)
+        return UIColor.tileForecolour(value)
     }
     
     var value: Int
@@ -31,29 +31,29 @@ class Tile {
         self.value = value
     }
     
-    private func colourForValue(_ value: Int) -> UIColor {
-        switch value {
-        case 2: return .tile2
-        case 4: return .tile4
-        case 8: return .tile8
-        case 16: return .tile16
-        case 32: return .tile32
-        case 64: return .tile64
-        case 128: return .tile128
-        case 256: return .tile256
-        case 512: return .tile512
-        case 1024: return .tile1024
-        case 2048: return .tile2048
-        default: return .white
-        }
-    }
+//    private func colourForValue(_ value: Int) -> UIColor {
+//        switch value {
+//        case 2: return .tile2
+//        case 4: return .tile4
+//        case 8: return .tile8
+//        case 16: return .tile16
+//        case 32: return .tile32
+//        case 64: return .tile64
+//        case 128: return .tile128
+//        case 256: return .tile256
+//        case 512: return .tile512
+//        case 1024: return .tile1024
+//        case 2048: return .tile2048
+//        default: return .white
+//        }
+//    }
     
-    private func forecolourForValue(_ value: Int) -> UIColor {
-        if value < 256 {
-            return .gameBackground
-        }
-        return .white
-    }
+//    private func forecolourForValue(_ value: Int) -> UIColor {
+//        if value < 256 {
+//            return .gameBackground
+//        }
+//        return .white
+//    }
 }
 
 extension Tile: Equatable {

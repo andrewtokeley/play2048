@@ -29,6 +29,8 @@ final class GameOverPresenter: Presenter {
             
                 self.view.viewController.removeSpinner(spinnerView: spinnerContainer)
                 
+                self.delegate?.isNewHighScore(scoreValue: data.scoreValue)
+                
                 let titleAndMessage = self.interactor.endOfGameTitleAndMessage(won: data.hasWon, isTopTen: isTopTen, isHighScore: isHighScore)
                 
                 self.view.displayNextStepOptions(!isTopTen)

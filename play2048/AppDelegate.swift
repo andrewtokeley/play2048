@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
 
         // Open first view
-        window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         let module = AppModules.loader.build()
-        module.router.show(inWindow: window, embedInNavController: false, setupData: nil, makeKeyAndVisible: true)
+        module.router.show(inWindow: self.window, embedInNavController: false, setupData: nil, makeKeyAndVisible: true)
         
         return true
     }

@@ -20,8 +20,6 @@ final class HighScoresPresenter: Presenter {
     }
     
     override func viewIsAboutToAppear() {
-        
-        //view.displayTitle(title: "High Scores")
         view.displaySpinner(show: true)
         interactor.fetchHighScores()
     }
@@ -32,6 +30,15 @@ extension HighScoresPresenter: HighScoresPresenterApi {
     
     func didSelectClose() {
         router.dismiss(animated: true, completion: nil)
+    }
+    
+    func didSelectDelete(completion: (() -> Void)?) {
+        self.view.displaySpinner(show: true)
+        interactor.deleteHighscores {
+            self.view.displaySpinner(show: false)
+            self.view.displayHighscores(scores: [Score](), highlightedScoreId: nil)
+            completion?()
+        }
     }
     
     func didFetchHighScores(scores: [Score]) {

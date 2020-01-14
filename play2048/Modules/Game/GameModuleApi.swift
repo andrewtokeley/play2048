@@ -41,6 +41,12 @@ protocol GameViewApi: UserInterfaceProtocol {
     func displayMessage(title: String, message: String, completion: (() -> Void)?)
     
     func displayMessageAndGetString(title: String, message: String, completion: ((String) -> Void)?)
+    
+    func moveTile(from: GridReference, inDirection direction: Direction)
+    func removeTile(from: GridReference)
+    func changeTileValue(newValue: Int, reference: GridReference)
+    func addTile(tile: Tile, reference: GridReference)
+    func removeAllTiles()
 }
 
 //MARK: - GamePresenter API
@@ -75,6 +81,21 @@ protocol GamePresenterApi: PresenterProtocol {
     
     /// Interactor will call this once a game has been initialised and is ready to play
     func gameInitialised()
+    
+    /// Called by Interactor for each tile that has moved
+    func didMoveTile(from: GridReference, inDirection direction: Direction)
+    
+    /// Called by Interactor for each tile that has removed
+    func didRemoveTile(from: GridReference)
+    
+    /// Called by Interactor for each tile that has changed it's value
+    func didChangeTileValue(newValue: Int, reference: GridReference)
+    
+    /// Called by Interactor when a new tile has been added
+    func didAddTile(tile: Tile, reference: GridReference)
+    
+    /// Called by Interactor when all times have been removed. e.g. when a new game is initiaised.
+    func didRemoveAllTiles()
 }
 
 //MARK: - GameInteractor API
@@ -84,35 +105,29 @@ protocol GameInteractorApi: InteractorProtocol {
     func newGame(tileSet: TileSet, showFirstTiles: Bool)
     
     /**
-     Moves the tiles in the given direction and returns information about the score and tileSet state.
+     Moves the tiles in the given direction.
      
-     The completion closure returns three parameters,
-     - (Bool) flag indicating whether there are any more moves available
-     - (Int) the highest tile value
-     - (Int) the score
+     - Parameters:
+        - completion: closure is called once the move instruction has been completed. The closure is passed a Bool flag set to whether any tiles actually moved, the score and the value of the highest tile, respectively.
+     
+     - Important:
+     Animations associated with this move may not have completed when the completion closure is called.
      */
     func moveTiles(direction: Direction, completion: ((Bool, Int, Int) -> Void)?)
-    
-    func getHighScores(completion: (([Score], Error?) -> Void)?)
-    
-//    /**
-//     Checks the current score for high score status.
-//     
-//     The closure returns two parameters;
-//     - (Bool) flag indicating whether score is in the top 10
-//     - (Bool) flag indicating whether score is a new highscore
-//     */
-//    func checkScore(scoreValue: Int, completion: ((Bool, Bool) -> Void)?)
-//    
-//    /// Save the current score. The completion closure will return the score and whether it is a high score.
-//    func saveScore(score: Score, completion: ((Score?, Error?) -> Void)?)
-}
+ 
+    /**
+     Adds a new tile to the grid at a random position.
 
-//extension GameInteractorApi {
-//    /**
-//     Extend GameInteractor to include default parameters for `newGame` method
-//     */
-//    func newGame(tileSet: TileSet = TileSet(rows: 4, columns: 4), showFirstTiles: Bool = true) {
-//        self.newGame(tileSet: tileSet, showFirstTiles: showFirstTiles)
-//    }
-//}
+     - Parameters:
+        - completion: closure is called once the tile has been added to the grid. It is passed a single `Bool` indicating whether there are any available moves left.
+     
+     - Important:
+        Animations associated with adding the tile may not have completed whent he closure is called.
+        */
+    func addNewTile(completion: ((Bool) -> Void)?)
+
+    /**
+     Retrieves the latest high scores from the server.
+     */
+    func getHighScores(completion: (([Score], Error?) -> Void)?)
+}

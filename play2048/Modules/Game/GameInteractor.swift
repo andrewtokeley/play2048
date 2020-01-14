@@ -9,6 +9,10 @@
 import Foundation
 //import Viperit
 
+enum GameInteractorError: Error {
+    case TileSetNotInitiated
+}
+
 // MARK: - GameInteractor Class
 final class GameInteractor: Interactor {
     
@@ -37,8 +41,10 @@ extension GameInteractor: GameInteractorApi {
         score = 0
         
         self.tileSet = tileSet
+        presenter.didRemoveAllTiles()
         
         self.tileSet?.delegate = self
+        self.tileSet?.gridDelegate = self
         
         if showFirstTiles {
             // Place two random tiles
@@ -81,78 +87,40 @@ extension GameInteractor: GameInteractorApi {
             completion?(scores, error)
         }
     }
+ 
+    func addNewTile(completion: ((Bool) -> Void)?) {
         
-//    /**
-//     Save score to data store
-//     */
-//    func saveScore(score: Score, completion: ((Score?, Error?) -> Void)?) {
-//        
-//        let service = ServiceFactory.sharedInstance.scoreService
-//        service.addScore(score: score) { (score, error) in
-//            completion?(score, error)
-//        }
-//    }
+        // if you call this method before you've initialised a new game, it will do nothing
+        guard tileSet != nil else {
+            return
+        }
+        
+        let value = Int.random(in: 0..<10) == 0 ? 4 : 2
+        self.tileSet!.addTileToRandomSpace(tile: Tile(value: value))
+        completion?(self.tileSet!.canMove())
+    }
     
-//    /**
-//    Checks the current score for high score status.
-//
-//    The closure returns two parameters;
-//    - (Bool) flag indicating whether score is in the top 10
-//    - (Bool) flag indicating whether score is a new highscore
-//    */
-//    func checkScore(scoreValue: Int, completion: ((Bool, Bool) -> Void)?) {
-//
-//        var isHighScore = false
-//        var isTopTen = false
-//
-//        // get the highscores
-//        let service = ServiceFactory.sharedInstance.scoreService
-//        service.highScores { (scores, error) in
-//            isTopTen = scoreValue > (scores.last?.score ?? 0)
-//            isHighScore = scoreValue > (scores.first?.score ?? 0)
-//
-//            completion?(isTopTen, isHighScore)
-//        }
-//    }
-    
-    /**
-    Moves the tiles in the given direction and returns information about the score and tileSet state.
-    
-    The completion closure returns three parameters,
-    - (Bool) flag indicating whether there are any more moves available
-    - (Int) the highest tile value
-    - (Int) the score
-    */
     func moveTiles(direction: Direction, completion: ((Bool, Int, Int) -> Void)?) {
         
+        // if you call this method before you've initialised a new game, it will do nothing
         guard tileSet != nil else {
-            completion?(false, 0, 0)
-            return }
+            return
+        }
         
-        if (tileSet!.moveTiles(direction: direction)) {
+        tileSet!.moveTiles(direction: direction) { (tilesDidMove) in
         
-            presenter.didUpdateTileSet(tileSet: tileSet!)
-            
-            // Check if new highest tile value
-            if let highestValue = tileSet?.highestTileValue {
-                if highestValue > currentHighestValue {
-                    currentHighestValue = highestValue
+            if tilesDidMove {
+                
+                // Check if new highest tile value
+                if let highestValue = self.tileSet?.highestTileValue {
+                    if highestValue > self.currentHighestValue {
+                        self.currentHighestValue = highestValue
+                    }
                 }
             }
             
-            // Delay adding the new tile
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                
-                // add a new tile to a random empty space, give value 2 90% of the time, otherwise 4
-                let value = Int.random(in: 0..<10) == 0 ? 4 : 2
-                self.tileSet!.addTileToRandomSpace(tile: Tile(value: value))
-                
-                self.presenter.didUpdateTileSet(tileSet: self.tileSet!)
-                
-                completion?(self.tileSet!.canMove(), self.currentHighestValue, self.score)
-            }
+            completion?(tilesDidMove, self.score, self.currentHighestValue)
         }
-        
     }
 }
 
@@ -162,13 +130,31 @@ extension GameInteractor: TileSetDelegate {
         
     func tileSet(_ tileSet: TileSet, didMatchTile tile: Tile) {
         score += tile.value
-        
         presenter.didUpdateScore(scoreValue: score)
     }
     
     func tileSet(_ tileSet: TileSet, highestTileValue: Int) {
-        //presenter.playerHasNewHighestValueTile(value: highestTileValue)
+        // TODO - get rid of this
     }
+}
+
+extension GameInteractor: TileSetGridDelegate {
+    func tileSet(_ tileSet: TileSet, tileMovedFrom from: GridReference, inDirection direction: Direction, iteration: Int) {
+        presenter.didMoveTile(from: from, inDirection: direction)
+    }
+    
+    func tileSet(_ tileSet: TileSet, tileRemovedFrom from: GridReference, iteration: Int) {
+        presenter.didRemoveTile(from: from)
+    }
+    
+    func tileSet(_ tileSet: TileSet, tileValueChangedTo newValue: Int, at: GridReference, iteration: Int) {
+        presenter.didChangeTileValue(newValue: newValue, reference: at)
+    }
+    
+    func tileSet(_ tileSet: TileSet, tileAdded tile: Tile, reference: GridReference) {
+        presenter.didAddTile(tile: tile, reference: reference)
+    }
+
 }
 
 // MARK: - Interactor Viper Components Api

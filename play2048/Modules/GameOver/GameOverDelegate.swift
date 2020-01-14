@@ -16,4 +16,5 @@ enum GameOverOption {
 protocol GameOverDelegate {
     func gameOver(didSelectOption option: GameOverOption)
     func didSaveHighScore(scoreId: String)
+    func isNewHighScore(scoreValue: Int)
 }
