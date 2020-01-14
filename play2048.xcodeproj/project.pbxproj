@@ -283,6 +283,7 @@
 		D864E0CD23CA59CD001BD3D3 /* TileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileNode.swift; sourceTree = "<group>"; };
 		D864E0D223CA7CA7001BD3D3 /* GridSceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSceneTests.swift; sourceTree = "<group>"; };
 		D8709E4B23CC3A3600DE9A2D /* BlankTileNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankTileNode.swift; sourceTree = "<group>"; };
+		D8709E4F23CE534B00DE9A2D /* 2014.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 2014.gif; sourceTree = "<group>"; };
 		D8C2200B23C661CA0007A58B /* FeatureFlags_Dev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags_Dev.swift; sourceTree = "<group>"; };
 		D8C2200E23C72ACB0007A58B /* FeatureFlags_Prod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags_Prod.swift; sourceTree = "<group>"; };
 		D8D3531D23AAC17F00E4B7B8 /* FirestoreEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreEntity.swift; sourceTree = "<group>"; };
@@ -381,6 +382,7 @@
 				D8C2200A23C661AC0007A58B /* FeatureFlags */,
 				D84DC18723B5515500303D19 /* launchimage_1125x2436.png */,
 				D8538684239EB70600E2BB1F /* Assets.xcassets */,
+				D8709E4F23CE534B00DE9A2D /* 2014.gif */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
