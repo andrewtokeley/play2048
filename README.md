@@ -5,7 +5,7 @@ Classic tile game of 2048
 
 # Game Features
 
-* Smooth animation
+* Smooth animation of the classic [2048 Game](https://en.wikipedia.org/wiki/2048_(video_game))
 * Highscore table - beat the world!
 * Saved state - never lose your game even if you close the app mid game
 
